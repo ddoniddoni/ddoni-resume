@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Clash Display";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.fontshare.com/wf/VFMK2COV3DN37JR7JQ4CAOJPZ7KWKNY7/ODD5YJNDLHZZB2MIT3DPVH4EIHAMZ34D/BSY64LPTT3OPLVKAZKL3AHKRWZ3D74AC.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Clash Display";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.fontshare.com/wf/FPDAZ2S6SW4QMSRIIKNNGTPM6VIXYMKO/5HNPQ453FRLIQWV2FNOBUU3FKTDZQVSG/Z3MGHFHX6DCTLQ55LJYRJ5MDCZPMFZU6.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Satoshi;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.fontshare.com/wf/TTX2Z3BF3P6Y5BQT3IV2VNOK6FL22KUT/7QYRJOI3JIMYHGY6CH7SOIFRQLZOLNJ6/KFIAZD4RUMEZIYV6FQ3T3GP5PDBDB6JY.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Satoshi;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.fontshare.com/wf/P2LQKHE6KA6ZP4AAGN72KDWMHH6ZH3TA/ZC32TK2P7FPS5GFTL46EU6KQJA24ZYDB/7AHDUZ4A7LFLVFUIFSARGIWCRQJHISQP.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Satoshi;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.fontshare.com/wf/LAFFD4SDUCDVQEXFPDC7C53EQ4ZELWQI/PXCT3G6LO6ICM5I3NTYENYPWJAECAWDD/GHM6WVH6MILNYOOCXHXB5GTSGNTMGXZR.woff2") format("woff2");
+}
+
+:root {
+  --ink: #0b0b0d;
+  --ink-raised: #111116;
+  --ink-soft: #27272a;
+  --paper: #f6f7ff;
+  --paper-muted: #c0c0cf;
+  --line: rgb(246, 247, 255, 14%);
+  --line-strong: rgb(246, 247, 255, 24%);
+  --signal: #b5ff6d;
+  --signal-deep: #81c63d;
+  --header-backdrop: rgb(11, 11, 13, 80%);
+  --nav-backdrop: rgb(11, 11, 13, 92%);
+  --mockup-ink: #101014;
+  --mockup-paper: #f6f7ff;
+  --display-font: "Clash Display", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --body-font: "Satoshi", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  --mono-font: "Satoshi", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  --type-display-hero: 3rem;
+  --type-display-page: 3rem;
+  --type-display-section: 3rem;
+  --type-display-detail: 3rem;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --ink: #f7f8fa;
+  --ink-raised: #fff;
+  --ink-soft: #e5e7eb;
+  --paper: #0a0a0a;
+  --paper-muted: #5b5b66;
+  --line: rgb(10, 10, 10, 12%);
+  --line-strong: rgb(10, 10, 10, 20%);
+  --header-backdrop: rgb(247, 248, 250, 82%);
+  --nav-backdrop: rgb(247, 248, 250, 94%);
+
+  color-scheme: light;
+}
+
+@media (width >= 64rem) {
+  :root {
+    --type-display-hero: 4.5rem;
+    --type-display-page: 4.5rem;
+    --type-display-detail: 4.5rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-inline-size: 320px;
+  font-family: var(--body-font);
+  font-size: 16px;
+  color: var(--paper);
+  line-height: 1.375;
+  background: var(--ink);
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+::selection {
+  color: var(--ink);
+  background: var(--signal);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 100;
+  padding-block: 0.65rem;
+  padding-inline: 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  transform: translateY(-150%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.visually-hidden {
+  overflow: hidden !important;
+  position: absolute !important;
+  block-size: 1px !important;
+  inline-size: 1px !important;
+  white-space: nowrap !important;
+  clip-path: inset(50%);
+}
+
+.page {
+  margin-inline: auto;
+  padding-block: clamp(3.5rem, 8vw, 7rem) clamp(5rem, 12vw, 10rem);
+  inline-size: min(100% - 2rem, 960px);
+}
+
+.section {
+  margin-block-start: clamp(7rem, 15vw, 12rem);
+}
+
+.eyebrow {
+  font-family: var(--display-font);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--paper-muted);
+  letter-spacing: 0.057em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.text-link,
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 650;
+}
+
+.text-link {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-color: rgb(240, 180, 119, 55%);
+  text-underline-offset: 0.4rem;
+}
+
+.text-link > span,
+.button:not(.button--ripple) > span {
+  transition: transform 180ms ease;
+}
+
+.text-link:hover > span,
+.button:not(.button--ripple):hover > span {
+  transform: translate(0.16rem, -0.16rem);
+}
+
+.button {
+  padding-block: 0.8rem;
+  padding-inline: 1.15rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.button--outline:hover {
+  color: var(--ink);
+  border-color: var(--signal);
+  background: var(--signal);
+}
+
+.button--signal {
+  overflow: hidden;
+  position: relative;
+  padding-block: 0.6875rem;
+  padding-inline: 1.5rem;
+  min-block-size: 2.75rem;
+  min-inline-size: 8.6875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--paper);
+  line-height: 1.25rem;
+  border-color: var(--paper);
+  background: transparent;
+}
+
+.button--signal:hover {
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+.page-header {
+  display: grid;
+  gap: 1.5rem;
+  padding-block-end: clamp(4rem, 10vw, 8rem);
+}
+
+.page-header__title {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: var(--type-display-page);
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.page-header__description {
+  margin: 0;
+  max-inline-size: 38rem;
+  font-size: 1rem;
+  color: var(--paper-muted);
+  line-height: 1.375;
+}
+
+@media (width >= 640px) {
+  .page {
+    inline-size: min(100% - 3rem, 76rem);
+  }
+}
+
+@media (width <= 639px) {
+  body {
+    padding-block-end: 4.4375rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

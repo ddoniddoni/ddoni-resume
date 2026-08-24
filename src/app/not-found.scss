@@ -1,0 +1,12 @@
+.not-found {
+  display: grid;
+  align-content: center;
+  gap: 1.5rem;
+  min-block-size: 65svh;
+
+  p {
+    margin: 0;
+    max-inline-size: 34rem;
+    color: var(--paper-muted);
+  }
+}

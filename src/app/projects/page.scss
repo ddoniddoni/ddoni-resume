@@ -1,0 +1,38 @@
+.page--projects {
+  padding-block-start: calc(clamp(3.5rem, 8vw, 7rem) + 0.125rem);
+}
+
+  .projects-page-header {
+    gap: 0.9rem;
+    padding-block-end: 3.1875rem;
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--signal);
+    }
+
+    .page-header__title {
+      inline-size: 100%;
+      font-size: var(--type-display-page);
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 1;
+    }
+  }
+
+  .eyebrow-mark {
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+@media (width <= 639px) {
+  .page--projects {
+    padding-block-start: 4.125rem;
+  }
+
+  .projects-page-header {
+    padding-block-end: 3.6875rem;
+  }
+}
