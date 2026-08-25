@@ -20,8 +20,8 @@
       transform: translateY(30px);
     }
 
-    &:hover .project-card__visual,
-    &:focus-visible .project-card__visual {
+    &:hover .project-card__visual:not(.project-card__visual--image),
+    &:focus-visible .project-card__visual:not(.project-card__visual--image) {
       transform: scale(1.015);
     }
   }
@@ -64,20 +64,32 @@
     }
   }
 
+  .project-card__preview,
   .project-card__mockup {
     overflow: hidden;
     position: absolute;
     z-index: 1;
-    padding: 12px;
-    color: var(--mockup-paper);
     border: 1px solid rgb(246, 247, 255, 10%);
     border-radius: 14.4px;
     background: var(--mockup-ink);
     box-shadow: 0 20px 32px rgb(11, 11, 13, 30%);
-    transform: perspective(800px) rotateX(1deg) rotateZ(-1.5deg);
-    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 420ms ease;
     inset-block: 13% 12%;
     inset-inline: 12%;
+  }
+
+  .project-card__preview {
+    background: #202020;
+  }
+
+  .project-card__image {
+    object-fit: contain;
+  }
+
+  .project-card__mockup {
+    padding: 12px;
+    color: var(--mockup-paper);
+    transform: perspective(800px) rotateX(1deg) rotateZ(-1.5deg);
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 420ms ease;
   }
 
   .project-card__mockup-bar {

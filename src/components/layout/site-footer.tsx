@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
-import "./site-footer.scss";
+import "@/styles/layout/site-footer.scss";
 
 export function SiteFooter() {
   return (

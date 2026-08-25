@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "./contact-cta.scss";
+import "@/styles/layout/contact-cta.scss";
 
 export function ContactCta() {
   return (

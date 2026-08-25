@@ -1,6 +1,16 @@
 export type ProjectCategory = "development" | "design";
 export type ProjectTone = "clay" | "sage" | "sky" | "plum" | "sand";
 
+export type ProjectPreviewImage = {
+  src: string;
+  alt: string;
+};
+
+export type ProjectTechnology = {
+  name: string;
+  description?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -10,7 +20,11 @@ export type Project = {
   categories: ProjectCategory[];
   role: string;
   technologies: string[];
+  technologyDetails?: ProjectTechnology[];
   tone: ProjectTone;
+  previewImage?: ProjectPreviewImage;
+  projectUrl?: string;
+  repositoryUrl?: string;
   featured?: boolean;
   background: string[];
   process: string[];
@@ -34,6 +48,13 @@ export type HeroLink = {
 export type AboutPreview = {
   eyebrow: string;
   statement: string;
+};
+
+export type WorkShowcase = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  actionLabel: string;
 };
 
 export type CareerEntry = {
@@ -92,6 +113,14 @@ export const aboutPreview: AboutPreview = {
   eyebrow: "About me",
   statement:
     "사용자 경험을 기술로 구현하는 프론트엔드 개발자입니다.\n단순히 화면을 구현하는 것을 넘어, 사용자가 더 편리하고 자연스럽게 서비스를 이용할 수 있는 방법을 고민합니다.\n좋은 사용자 경험과 안정적인 개발 사이의 균형을 중요하게 생각하며,\n더 나은 제품을 만들기 위해 끊임없이 고민하고 개선합니다.",
+};
+
+export const workShowcase: WorkShowcase = {
+  eyebrow: "My work",
+  title: "주요 프로젝트",
+  description:
+    "실시간 서비스, 사용자 기능, 다국어 자동화, 인프라 운영 시각화까지 문제의 맥락과 구현 과정을 기록합니다.",
+  actionLabel: "모든 프로젝트 보기",
 };
 
 export const careerSummary = "총 4년 5개월";
@@ -180,32 +209,60 @@ export const projectCategoryLabels: Record<ProjectCategory, string> = {
 
 export const projects: Project[] = [
   {
-    slug: "service-renewal-browser-validation",
-    title: "서비스 리뉴얼과 브라우저 기반 기능 검증",
-    summary: "기존 비즈니스 로직을 유지하며 신규 화면과 상태 흐름을 연결하고, 사용자 시나리오 기반 검증 과정을 구축했습니다.",
-    organization: "주식회사더블다운게임즈 (DoubleDownGamesInc.)",
-    period: "2026. 01 — 2026. 03",
+    slug: "tripmate",
+    title: "TripMate",
+    summary:
+      "장소 탐색, 일정 편집, 지도 동선, 준비물과 공동 경비를 한 화면에서 관리하는 실시간 협업 여행 플래너입니다.",
+    organization: "개인 프로젝트",
+    period: "2026",
     categories: ["development"],
-    role: "리뉴얼 화면 개발 · 컴포넌트 및 상태 구조 재구성 · 브라우저 기반 기능 검증",
-    technologies: ["React", "Next.js", "TypeScript", "agent-browser"],
+    role: "프론트엔드 설계 · 실시간 협업 기능 구현 · 풀스택 연동",
+    technologies: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "dnd-kit",
+      "Liveblocks",
+      "Supabase",
+      "Google Maps Platform",
+      "OpenAI Responses API",
+      "Vitest",
+      "Playwright",
+    ],
+    technologyDetails: [
+      { name: "Next.js 16", description: "App Router 기반 화면과 서버 경계를 구성했습니다." },
+      { name: "React 19", description: "일정, 지도, 패널을 역할별 컴포넌트로 나눴습니다." },
+      { name: "TypeScript", description: "도메인 모델과 API·실시간 상태 계약을 명확히 유지했습니다." },
+      { name: "dnd-kit", description: "일정 순서 변경과 날짜 간 이동을 구현했습니다." },
+      { name: "Liveblocks", description: "동시 편집 데이터, Presence, Undo / Redo 이력을 관리했습니다." },
+      { name: "Supabase", description: "인증, 여행 메타데이터, 멤버십과 RLS를 맡았습니다." },
+      { name: "Google Maps Platform", description: "장소 검색, 지도 표시, 여행 동선을 연결했습니다." },
+      { name: "Vitest · Playwright", description: "도메인 규칙과 브라우저 사용자 흐름을 검증했습니다." },
+    ],
     tone: "clay",
+    previewImage: {
+      src: "/projects/tripmate-schedule.png",
+      alt: "TripMate 후쿠오카 여행 일정 관리 화면",
+    },
+    projectUrl: "https://tripmate-xi-six.vercel.app",
+    repositoryUrl: "https://github.com/ddoniddoni/tripmate",
     featured: true,
     background: [
-      "기존 서비스의 화면 구조와 사용자 흐름을 신규 정책 및 UI에 맞게 개편하는 리뉴얼 프로젝트를 진행했습니다.",
-      "기존 비즈니스 로직을 유지하면서 신규 화면과 상태 흐름을 연결하고, 화면 이동·사용자 입력·상태 변경에서 발생할 수 있는 오류를 사전에 검증해야 했습니다.",
+      "여행 준비가 단체 채팅방에서 시작되면 장소 링크, 일정 의견, 준비물과 경비 정보가 빠르게 흩어지고 여러 버전의 계획표가 생깁니다.",
+      "TripMate는 장소 탐색부터 일정, 지도 동선, 준비물, 공동 경비까지를 하나의 공유 여행판에서 관리하고, 여러 사람이 동시에 편집할 수 있도록 설계한 웹 애플리케이션입니다.",
     ],
     process: [
-      "기존 화면의 컴포넌트 의존성과 사용자 흐름을 분석하고, 리뉴얼 정책에 맞춰 기능·도메인 기준으로 컴포넌트 구조를 재구성",
-      "기존 비즈니스 로직과 신규 UI의 상태 동기화 방식을 검토하고, 변경 요구사항에 맞춰 데이터 변환 및 상태 처리 로직을 개선",
-      "화면 이동, 사용자 입력, 상태 변경을 3개 검증 범주로 나누고 기능별 테스트 시나리오와 기대 결과를 정의",
-      "agent-browser 기반 브라우저 테스트로 실제 사용자 흐름의 화면 전환, 입력 처리, 상태 동기화 오류를 검증",
-      "테스트에서 발견한 이슈를 수정한 뒤 같은 시나리오를 반복 실행해 수정 결과와 회귀 여부를 재검증",
+      "여행 메타데이터와 권한은 Supabase에, 여러 사람이 함께 편집하는 일정·준비물·경비는 Liveblocks Storage에, 일시적인 접속·선택 상태는 Presence에 분리해 단일 소유자를 정했습니다.",
+      "dnd-kit으로 같은 날의 순서 변경과 날짜 간 이동을 구현하고, Drag 중에는 로컬 프리뷰만 갱신한 뒤 Drop 시점에 하나의 도메인 mutation과 Undo / Redo 이력으로 커밋했습니다.",
+      "일정 카드와 지도 마커를 양방향으로 연결하고, 확정된 좌표 순서로만 Google Routes API를 요청했습니다. 동일 경로는 캐시하고 stale 요청을 취소해 불필요한 외부 호출을 줄였습니다.",
+      "Liveblocks room 권한은 서버 Route Handler에서 Supabase 로그인·멤버십·역할을 확인한 뒤 발급하고, owner / editor / viewer 권한을 UI뿐 아니라 RLS와 서버 경계에서도 검증했습니다.",
+      "도메인 규칙, 컴포넌트, Route Handler, 브라우저 흐름을 Vitest와 Playwright로 나눠 검증하고, 유료 외부 API는 adapter와 mock으로 테스트 경계에서 분리했습니다.",
     ],
     outcome: [
-      "기존 비즈니스 로직을 유지하면서 신규 리뉴얼 화면과 상태 흐름을 안정적으로 연결",
-      "화면 단위 확인에서 사용자 시나리오 기반 검증으로 전환해 기능 간 연결 오류를 검수 단계에서 조기 발견",
-      "이슈 수정 후 같은 시나리오를 반복 검증할 수 있는 브라우저 기반 기능 검증 프로세스 구축",
-      "화면 구조와 데이터 처리 책임을 기능 단위로 분리해 후속 기능 변경의 수정 범위와 회귀 위험 감소",
+      "장소 검색, 일정 CRUD·복제·날짜 이동, 지도 경로, 후보 장소, 초대·역할, 준비물과 공동 경비를 하나의 여행 단위로 연결했습니다.",
+      "데스크톱에서는 날짜 탐색·타임라인·지도를 함께 제공하고, 모바일에서는 일정과 지도를 전환해 좁은 화면에서도 편집 흐름을 유지했습니다.",
+      "연결·재연결·오프라인·읽기 전용·외부 Provider 오류처럼 협업 환경에서 발생하는 상태를 명시적으로 안내하도록 구현했습니다.",
+      "저장소 기준 Vitest 111개 파일·423개 테스트와 Playwright 3개 파일·5개 브라우저 시나리오로 핵심 도메인과 사용자 흐름을 검증했습니다.",
     ],
   },
   {

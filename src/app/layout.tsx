@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
 import { siteConfig } from "@/content/site";
 import "./tailwind.css";
-import "./globals.scss";
+import "@/styles/base/globals.scss";
 
 const themeScript = `(() => {
   try {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ContactCta } from "@/components/layout/contact-cta";
-import { ProjectCard } from "@/components/projects/project-card";
+import "@/styles/sections/intro.scss";
+import { WorkShowcase } from "@/components/projects/work-showcase";
 import { CareerCarousel } from "@/components/ui/career-carousel";
 import { ExpertiseAccordion } from "@/components/ui/expertise-accordion";
 import { HandWaveIcon, SparkleIcon } from "@/components/ui/icons";
@@ -16,7 +17,6 @@ import {
   projects,
   skillsTicker,
 } from "@/content/site";
-import "./page.scss";
 
 export default function Home() {
   const featuredProjects = projects.filter((project) => project.featured);
@@ -82,24 +82,7 @@ export default function Home() {
         <ScrollRevealText className="about-preview__statement" text={aboutPreview.statement} />
       </section>
 
-      <section className="section" aria-labelledby="selected-work-title">
-        <SectionHeading
-          eyebrow="Selected work"
-          title="경험으로 쌓은 프로젝트"
-          description="실시간 서비스, 사용자 기능, 다국어 자동화, 인프라 운영 시각화까지 문제의 맥락과 구현 과정을 기록합니다."
-          id="selected-work-title"
-        />
-        <div className="work-grid work-grid--featured">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index + 1} />
-          ))}
-        </div>
-        <div className="section-action">
-          <Link className="button button--outline" href="/projects">
-            모든 프로젝트 보기 <span aria-hidden="true">↗</span>
-          </Link>
-        </div>
-      </section>
+      <WorkShowcase projects={featuredProjects} />
 
       <section className="section section--expertise" aria-labelledby="expertise-title">
         <SectionHeading

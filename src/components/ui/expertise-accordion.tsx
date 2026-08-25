@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { ExpertiseArea } from "@/content/site";
-import "./expertise-accordion.scss";
+import "@/styles/ui/expertise-accordion.scss";
 
 type ExpertiseAccordionProps = {
   areas: ExpertiseArea[];

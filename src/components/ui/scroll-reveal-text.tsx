@@ -1,7 +1,7 @@
 "use client";
 
 import { type CSSProperties, useEffect, useMemo, useRef } from "react";
-import "./scroll-reveal-text.scss";
+import "@/styles/ui/scroll-reveal-text.scss";
 
 type ScrollRevealTextProps = {
   className?: string;
