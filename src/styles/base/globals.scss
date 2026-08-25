@@ -208,7 +208,7 @@ button {
 
 .page {
   margin-inline: auto;
-  padding-block: clamp(56px, 8vw, 112px) clamp(80px, 12vw, 160px);
+  padding-block: clamp(56px, 8vw, 112px) clamp(40px, 6vw, 80px);
   inline-size: min(100% - 32px, 960px);
 }
 
