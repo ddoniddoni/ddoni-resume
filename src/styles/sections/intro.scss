@@ -6,10 +6,6 @@
   inline-size: 100%;
 }
 
-  .page--home .contact-cta {
-    margin-block-start: clamp(43px, 6vw, 75px);
-  }
-
   .hero {
     display: grid;
     gap: 48px;
@@ -136,15 +132,12 @@
   .about-preview {
     display: grid;
     gap: 24px;
+    margin-block-start: var(--section-space);
     margin-inline: auto;
-    padding-block: clamp(88px, 9.1vw, 131px) clamp(64px, 7vw, 96px);
+    padding: 0;
     inline-size: min(100%, 1120px);
     text-align: center;
     place-items: center;
-  }
-
-  .about-preview + .section {
-    margin-block-start: clamp(56px, 6vw, 88px);
   }
 
   .about-preview__eyebrow {

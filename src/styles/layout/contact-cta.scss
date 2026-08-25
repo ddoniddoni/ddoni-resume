@@ -1,5 +1,5 @@
 .contact-cta {
-  margin-block-start: clamp(128px, 18vw, 224px);
+  margin-block-start: var(--section-space);
   padding-block: clamp(96px, 12vw, 144px) 0;
   padding-inline: 0;
   text-align: center;

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { ContactCta } from "@/components/layout/contact-cta";
+import { SkillsTicker } from "@/components/ui/skills-ticker";
+import { career, careerSummary, expertiseAreas, profile, skillsTicker } from "@/content/site";
 import "@/styles/sections/profile.scss";
-import "@/styles/ui/content-panel.scss";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { career, careerSummary, profile } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -17,98 +16,110 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main id="main-content" className="page page--about">
-      <header className="page-header">
-        <p className="eyebrow">About</p>
-        <h1 className="page-header__title">일하는 방식을 기록합니다.</h1>
-        <p className="page-header__description">
-          {careerSummary} 동안 프론트엔드 개발자로 화면과 사용자 경험을 구축해 왔습니다.
-        </p>
-      </header>
-
-      <div className="about-layout">
-        <p className="about-statement">&ldquo;{profile.intro}&rdquo;</p>
-        <div className="about-copy">
-          <p>
-            이 포트폴리오는 작업을 단순히 모으는 공간보다, 어떤 맥락에서 무엇을
-            만들었는지 설명하는 아카이브를 목표로 합니다.
+      <section aria-labelledby="about-title" className="about-hero">
+        <aside aria-label="프로필 기록" className="about-hero__profile">
+          <p className="eyebrow">Profile record</p>
+          <p aria-hidden="true" className="about-hero__monogram">
+            PSD
           </p>
-          <p>
-            개인 프로필과 경력을 정리했으며, 교육과 기술 정보는 준비되는 대로
-            추가할 예정입니다.
-          </p>
-        </div>
-      </div>
+          <dl className="about-hero__facts">
+            <div>
+              <dt>Name</dt>
+              <dd>{profile.name}</dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd>{profile.role}</dd>
+            </div>
+            <div>
+              <dt>Contact</dt>
+              <dd>
+                <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              </dd>
+            </div>
+          </dl>
+        </aside>
 
-      <section className="section about-section" aria-labelledby="profile-info-title">
-        <div className="section-heading">
-          <div className="section-heading__topline">
-            <p className="eyebrow">Profile record</p>
-          </div>
-          <h2 id="profile-info-title" className="section-heading__title">
-            프로필 기록
-          </h2>
-        </div>
-        <div className="content-panel">
-          <div className="content-panel__row">
-            <p className="content-panel__label">Name</p>
-            <div>
-              <p className="content-panel__value">{profile.name}</p>
-            </div>
-          </div>
-          <div className="content-panel__row">
-            <p className="content-panel__label">Role</p>
-            <div>
-              <p className="content-panel__value">{profile.role}</p>
-            </div>
-          </div>
-          <div className="content-panel__row">
-            <p className="content-panel__label">Experience</p>
-            <div>
-              <p className="content-panel__value">{careerSummary}</p>
-              <p className="content-panel__hint">회사, 역할, 기간과 주요 작업을 아래에 기록합니다.</p>
-            </div>
-          </div>
-          <div className="content-panel__row">
-            <p className="content-panel__label">Toolkit</p>
-            <div>
-              <p className="content-panel__value">기술 정보 준비 중</p>
-              <p className="content-panel__hint">실제 프로젝트에서 사용한 도구만 추가합니다.</p>
-            </div>
-          </div>
+        <div className="about-hero__content">
+          <p className="eyebrow">About me</p>
+          <h1 id="about-title">사용자 경험을 기술로 구현하는 프론트엔드 개발자입니다.</h1>
+          <p className="about-hero__description">
+            단순히 화면을 구현하는 것을 넘어, 사용자가 더 편리하고 자연스럽게 서비스를
+            이용할 수 있는 방법을 고민합니다. 좋은 사용자 경험과 안정적인 개발 사이의
+            균형을 중요하게 생각합니다.
+          </p>
+          <a className="button button--outline about-hero__cta" href="#career-history">
+            경력 기록 보기 <span aria-hidden="true">↘</span>
+          </a>
         </div>
       </section>
 
-      <section className="section about-section" aria-labelledby="career-title">
-        <SectionHeading
-          eyebrow="Career"
-          title="경력 기록"
-          description={`${careerSummary} 동안 React, Next.js, TypeScript, Angular 기반의 프론트엔드 개발을 진행했습니다.`}
-          id="career-title"
-        />
-        <ol className="career-list">
-          {career.map((entry) => (
-            <li className="career-entry" key={`${entry.company}-${entry.period}`}>
-              <div className="career-entry__timeline">
-                <p>{entry.period}</p>
-                <p className="career-entry__duration">{entry.duration}</p>
-              </div>
-              <div className="career-entry__content">
-                <div className="career-entry__heading">
-                  <div>
-                    <h3>{entry.company}</h3>
-                    <p className="career-entry__team">{entry.team}</p>
-                  </div>
-                  <p className="career-entry__role">{entry.role}</p>
+      <SkillsTicker skills={skillsTicker} />
+
+      <section aria-labelledby="career-history-title" className="about-work-history" id="career-history">
+        <header className="about-section-heading">
+          <p className="eyebrow">Work history</p>
+          <h2 id="career-history-title">경력 기록</h2>
+          <p>
+            {careerSummary} 동안 React, Next.js, TypeScript, Angular 기반의 프론트엔드
+            개발을 진행했습니다.
+          </p>
+        </header>
+
+        <ol className="about-career-list">
+          {career.map((entry, index) => (
+            <li key={`${entry.company}-${entry.period}`}>
+              <details className="about-career-entry" open={index === 0}>
+                <summary>
+                  <span aria-hidden="true" className="about-career-entry__index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="about-career-entry__summary-copy">
+                    <span className="about-career-entry__company">{entry.company}</span>
+                    <span className="about-career-entry__team">{entry.team}</span>
+                  </span>
+                  <span className="about-career-entry__period">
+                    <span>{entry.period}</span>
+                    <span aria-hidden="true" className="about-career-entry__indicator">
+                      ↘
+                    </span>
+                  </span>
+                </summary>
+                <div className="about-career-entry__details">
+                  <p className="about-career-entry__role">{entry.role}</p>
+                  <ul>
+                    {entry.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="career-entry__highlights">
-                  {entry.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-              </div>
+              </details>
             </li>
           ))}
         </ol>
+      </section>
+
+      <section aria-labelledby="work-principles-title" className="about-work-principles">
+        <header className="about-section-heading">
+          <p className="eyebrow">How I work</p>
+          <h2 id="work-principles-title">작업 기준</h2>
+          <p>
+            실제 서비스에서 반복해 다뤄 온 문제를 기준으로 화면의 구조와 사용자 흐름을
+            설계합니다.
+          </p>
+        </header>
+
+        <div className="about-principles">
+          {expertiseAreas.map((area, index) => (
+            <article className="about-principles__item" key={area.id}>
+              <span aria-hidden="true" className="about-principles__index">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{area.title}</h3>
+              <p>{area.description}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <ContactCta />

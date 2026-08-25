@@ -1,9 +1,5 @@
 .work-showcase {
-  margin-block-start: clamp(72px, 8vw, 96px);
-}
-
-.about-preview + .work-showcase {
-  margin-block-start: clamp(72px, 8vw, 96px);
+  margin-block-start: var(--section-space);
 }
 
 .work-showcase__header {

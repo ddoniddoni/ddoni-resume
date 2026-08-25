@@ -1,6 +1,7 @@
 import type { SVGProps } from "react";
 import {
   siAngular,
+  siNestjs,
   siNextdotjs,
   siReact,
   siSass,
@@ -15,6 +16,7 @@ type BrandIconName = Exclude<SkillTickerIconName, "browser-testing" | "websocket
 
 const brandIcons: Record<BrandIconName, SimpleIcon> = {
   angular: siAngular,
+  nestjs: siNestjs,
   nextjs: siNextdotjs,
   react: siReact,
   sass: siSass,
@@ -24,6 +26,7 @@ const brandIcons: Record<BrandIconName, SimpleIcon> = {
 const skillIconColors: Record<SkillTickerIconName, string> = {
   angular: "#DD0031",
   "browser-testing": "#2EAD33",
+  nestjs: `#${siNestjs.hex}`,
   nextjs: "#FFFFFF",
   react: `#${siReact.hex}`,
   sass: `#${siSass.hex}`,

@@ -75,6 +75,7 @@ export type ExpertiseArea = {
 export type SkillTickerIcon =
   | "angular"
   | "browser-testing"
+  | "nestjs"
   | "nextjs"
   | "react"
   | "sass"
@@ -128,6 +129,7 @@ export const careerSummary = "총 4년 5개월";
 export const skillsTicker: SkillTickerItem[] = [
   { label: "React", icon: "react" },
   { label: "Next.js", icon: "nextjs" },
+  { label: "NestJS", icon: "nestjs" },
   { label: "TypeScript", icon: "typescript" },
   { label: "WebSocket", icon: "websocket" },
   { label: "Angular", icon: "angular" },
