@@ -1,8 +1,21 @@
 import Link from "next/link";
 import { ContactCta } from "@/components/layout/contact-cta";
 import { ProjectCard } from "@/components/projects/project-card";
+import { CareerCarousel } from "@/components/ui/career-carousel";
+import { ExpertiseAccordion } from "@/components/ui/expertise-accordion";
+import { HandWaveIcon, SparkleIcon } from "@/components/ui/icons";
+import { ScrollRevealText } from "@/components/ui/scroll-reveal-text";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { profile, projects } from "@/content/site";
+import { SkillsTicker } from "@/components/ui/skills-ticker";
+import {
+  aboutPreview,
+  career,
+  expertiseAreas,
+  heroLinks,
+  profile,
+  projects,
+  skillsTicker,
+} from "@/content/site";
 import "./page.scss";
 
 export default function Home() {
@@ -12,29 +25,37 @@ export default function Home() {
     <main id="main-content" className="page page--home">
       <section className="hero" aria-labelledby="home-title">
         <p className="hero__greeting">
-          <span aria-hidden="true" className="hero__greeting-mark">
-            ↳
+          <span aria-hidden="true" className="hero__greeting-hand">
+            <HandWaveIcon />
           </span>
           안녕하세요, {profile.name}입니다.
         </p>
         <h1 id="home-title" className="display-title hero__title">
-          상태가 바뀌는
-          <br />
-          <em>화면을 더 빠르게</em>
-          <br />
-          만듭니다.
+          <em>사용자</em>를 위한 <em>경험</em>을 구현합니다.
         </h1>
         <div className="hero__lower">
           <nav aria-label="빠른 이동" className="hero__quick-links">
-            <Link className="hero__quick-link" href="/about">
-              경력 <span aria-hidden="true">↗</span>
-            </Link>
-            <Link className="hero__quick-link" href="/projects">
-              프로젝트 <span aria-hidden="true">↗</span>
-            </Link>
-            <a className="hero__quick-link" href={`mailto:${profile.email}`}>
-              이메일 <span aria-hidden="true">↗</span>
-            </a>
+            {heroLinks.map((link) =>
+              link.external ? (
+                <a
+                  className="hero__quick-link"
+                  href={link.href}
+                  key={link.label}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {link.label} <span aria-hidden="true">↗</span>
+                </a>
+              ) : link.href.startsWith("mailto:") ? (
+                <a className="hero__quick-link" href={link.href} key={link.label}>
+                  {link.label} <span aria-hidden="true">↗</span>
+                </a>
+              ) : (
+                <Link className="hero__quick-link" href={link.href} key={link.label}>
+                  {link.label} <span aria-hidden="true">↗</span>
+                </Link>
+              ),
+            )}
           </nav>
           <div className="hero__aside">
             <p>
@@ -46,6 +67,19 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      <SkillsTicker skills={skillsTicker} />
+
+      <section className="about-preview" aria-labelledby="about-preview-title">
+        <h2 className="visually-hidden" id="about-preview-title">
+          {aboutPreview.eyebrow}
+        </h2>
+        <p aria-hidden="true" className="about-preview__eyebrow">
+          <SparkleIcon />
+          <span>{aboutPreview.eyebrow}</span>
+        </p>
+        <ScrollRevealText className="about-preview__statement" text={aboutPreview.statement} />
       </section>
 
       <section className="section" aria-labelledby="selected-work-title">
@@ -67,36 +101,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--ledger" aria-labelledby="archive-title">
+      <section className="section section--expertise" aria-labelledby="expertise-title">
         <SectionHeading
-          eyebrow="Archive logic"
-          title="한 작업, 세 가지 기록"
-          description="프로젝트 상세 페이지는 결과를 나열하는 대신 작업을 이해하기 위한 흐름을 기록합니다."
-          id="archive-title"
+          eyebrow="Areas of expertise"
+          title="집중하는 개발 영역"
+          description="실제 서비스에서 반복해 다뤄 온 문제와 화면 구현의 기준입니다."
+          id="expertise-title"
         />
-        <ol className="ledger-list">
-          <li>
-            <span className="ledger-list__number">01</span>
-            <div>
-              <h3>배경</h3>
-              <p>무엇을 해결해야 했는지와 시작점</p>
-            </div>
-          </li>
-          <li>
-            <span className="ledger-list__number">02</span>
-            <div>
-              <h3>과정</h3>
-              <p>역할, 선택과 구현의 흔적</p>
-            </div>
-          </li>
-          <li>
-            <span className="ledger-list__number">03</span>
-            <div>
-              <h3>결과</h3>
-              <p>검증된 변화와 다음 개선점</p>
-            </div>
-          </li>
-        </ol>
+        <ExpertiseAccordion areas={expertiseAreas} />
+      </section>
+
+      <section className="section" aria-labelledby="career-highlights-title">
+        <SectionHeading
+          eyebrow="Career highlights"
+          title="화면으로 남긴 경력"
+          description="프로젝트와 조직마다 달랐던 문제를 프론트엔드 구현으로 풀어 온 기록입니다."
+          id="career-highlights-title"
+        />
+        <CareerCarousel entries={career} />
       </section>
 
       <ContactCta />

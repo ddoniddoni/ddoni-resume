@@ -1,0 +1,91 @@
+.expertise-accordion {
+  border-block-start: 1px solid var(--line);
+}
+
+  .expertise-accordion__item {
+    border-block-end: 1px solid var(--line);
+  }
+
+  .expertise-accordion__title {
+    margin: 0;
+  }
+
+  .expertise-accordion__trigger {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    padding-block: clamp(21.6px, 3vw, 32px);
+    padding-inline: 0;
+    inline-size: 100%;
+    font-family: var(--display-font);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 500;
+    color: var(--paper);
+    letter-spacing: -0.56px;
+    line-height: 1;
+    text-align: start;
+    border: 0;
+    background: transparent;
+    transition: color 180ms ease;
+  }
+
+  .expertise-accordion__trigger:hover,
+  .expertise-accordion__trigger:focus-visible,
+  .expertise-accordion__trigger[aria-expanded="true"] {
+    color: var(--signal);
+  }
+
+  .expertise-accordion__indicator {
+    display: grid;
+    flex: none;
+    block-size: 32px;
+    inline-size: 32px;
+    font-family: var(--body-font);
+    font-size: 26.4px;
+    font-weight: 400;
+    color: var(--paper-muted);
+    line-height: 1;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    transition: color 180ms ease, border-color 180ms ease, transform 240ms ease;
+    place-items: center;
+  }
+
+  .expertise-accordion__trigger:hover .expertise-accordion__indicator,
+  .expertise-accordion__trigger:focus-visible .expertise-accordion__indicator,
+  .expertise-accordion__trigger[aria-expanded="true"] .expertise-accordion__indicator {
+    color: var(--ink);
+    border-color: var(--signal);
+    background: var(--signal);
+    transform: rotate(180deg);
+  }
+
+  .expertise-accordion__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .expertise-accordion__panel[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+
+  .expertise-accordion__panel-inner {
+    overflow: hidden;
+  }
+
+  .expertise-accordion__panel p {
+    margin-block: 0 24px;
+    margin-inline: 0;
+    max-inline-size: 672px;
+    color: var(--paper-muted);
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  .expertise-accordion__trigger,
+  .expertise-accordion__indicator,
+  .expertise-accordion__panel {
+    transition: none;
+  }
+}

@@ -1,12 +1,12 @@
 .not-found {
   display: grid;
   align-content: center;
-  gap: 1.5rem;
+  gap: 24px;
   min-block-size: 65svh;
 
   p {
     margin: 0;
-    max-inline-size: 34rem;
+    max-inline-size: 544px;
     color: var(--paper-muted);
   }
 }

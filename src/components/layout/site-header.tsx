@@ -2,11 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { NavigationIcon, ThemeIcon } from "@/components/ui/icons";
 import { navigation, siteConfig } from "@/content/site";
 import "./site-header.scss";
 
-const themeStorageKey = "ddoniddoni-theme";
+const themeStorageKey = "ddoni-resume-theme";
+
+type Theme = "dark" | "light";
 
 function isCurrentPath(pathname: string, href: string) {
   if (href === "/") {
@@ -16,55 +19,14 @@ function isCurrentPath(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function toggleTheme() {
-  const root = document.documentElement;
-  const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
-
-  root.dataset.theme = nextTheme;
-  root.style.colorScheme = nextTheme;
-  window.localStorage.setItem(themeStorageKey, nextTheme);
-}
-
-function NavIcon({ href }: { href: (typeof navigation)[number]["href"] }) {
-  if (href === "/") {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <path d="m4 10 8-6 8 6v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1Z" />
-      </svg>
-    );
-  }
-
-  if (href === "/about") {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <circle cx="12" cy="8" r="3" />
-        <path d="M5.5 20a6.5 6.5 0 0 1 13 0" />
-      </svg>
-    );
-  }
-
-  if (href === "/projects") {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <rect x="4" y="4" width="6" height="6" rx="1" />
-        <rect x="14" y="4" width="6" height="6" rx="1" />
-        <rect x="4" y="14" width="6" height="6" rx="1" />
-        <rect x="14" y="14" width="6" height="6" rx="1" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24">
-      <path d="m4 11 16-7-7 16-2-7Z" />
-      <path d="m11 13 4-4" />
-    </svg>
-  );
+function getDocumentTheme(): Theme {
+  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
 }
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [isCompact, setIsCompact] = useState(false);
+  const isThemeTransitioning = useRef(false);
 
   useEffect(() => {
     let animationFrame = 0;
@@ -84,6 +46,50 @@ export function SiteHeader() {
       window.removeEventListener("scroll", updateHeader);
     };
   }, []);
+
+  const toggleTheme = (event: MouseEvent<HTMLButtonElement>) => {
+    if (isThemeTransitioning.current) {
+      return;
+    }
+
+    const nextTheme = getDocumentTheme() === "dark" ? "light" : "dark";
+    const applyTheme = () => {
+      document.documentElement.dataset.theme = nextTheme;
+      document.documentElement.style.colorScheme = nextTheme;
+      localStorage.setItem(themeStorageKey, nextTheme);
+    };
+
+    const hasReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (hasReducedMotion || !document.startViewTransition) {
+      applyTheme();
+      return;
+    }
+
+    const buttonBounds = event.currentTarget.getBoundingClientRect();
+    const originX = buttonBounds.left + buttonBounds.width / 2;
+    const originY = buttonBounds.top + buttonBounds.height / 2;
+    const revealDiameter = Math.max(window.innerWidth, window.innerHeight) * 3.5;
+    const root = document.documentElement;
+
+    isThemeTransitioning.current = true;
+    root.dataset.themeTransitioning = "true";
+    root.style.setProperty("--theme-reveal-origin-x", `${originX}px`);
+    root.style.setProperty("--theme-reveal-origin-y", `${originY}px`);
+    root.style.setProperty("--theme-reveal-diameter", `${revealDiameter}px`);
+
+    const transition = document.startViewTransition(applyTheme);
+
+    void transition.finished
+      .catch(() => undefined)
+      .finally(() => {
+        isThemeTransitioning.current = false;
+        delete root.dataset.themeTransitioning;
+        root.style.removeProperty("--theme-reveal-origin-x");
+        root.style.removeProperty("--theme-reveal-origin-y");
+        root.style.removeProperty("--theme-reveal-diameter");
+      });
+  };
 
   return (
     <header className="site-header" data-compact={isCompact ? "true" : "false"}>
@@ -111,19 +117,24 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <button className="theme-toggle" onClick={toggleTheme} type="button">
-          <span className="theme-icon theme-icon--sun" aria-hidden="true">
-            <svg fill="none" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-            </svg>
+        <button
+          aria-label="테마 전환"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            className="theme-toggle__icon theme-toggle__icon--sun"
+          >
+            <ThemeIcon theme="light" />
           </span>
-          <span className="theme-icon theme-icon--moon" aria-hidden="true">
-            <svg fill="none" viewBox="0 0 24 24">
-              <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z" />
-            </svg>
+          <span
+            aria-hidden="true"
+            className="theme-toggle__icon theme-toggle__icon--moon"
+          >
+            <ThemeIcon theme="dark" />
           </span>
-          <span className="visually-hidden">테마 전환</span>
         </button>
       </div>
       <nav className="mobile-nav" aria-label="모바일 주요 메뉴">
@@ -137,7 +148,7 @@ export function SiteHeader() {
               href={item.href}
               key={item.href}
             >
-              <NavIcon href={item.href} />
+              <NavigationIcon href={item.href} />
               <span>{item.label}</span>
             </Link>
           );

@@ -25,6 +25,17 @@ export type Profile = {
   availability: string;
 };
 
+export type HeroLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+export type AboutPreview = {
+  eyebrow: string;
+  statement: string;
+};
+
 export type CareerEntry = {
   company: string;
   team: string;
@@ -32,6 +43,26 @@ export type CareerEntry = {
   duration: string;
   role: string;
   highlights: string[];
+};
+
+export type ExpertiseArea = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export type SkillTickerIcon =
+  | "angular"
+  | "browser-testing"
+  | "nextjs"
+  | "react"
+  | "sass"
+  | "typescript"
+  | "websocket";
+
+export type SkillTickerItem = {
+  label: string;
+  icon: SkillTickerIcon;
 };
 
 export const siteConfig = {
@@ -50,7 +81,51 @@ export const profile: Profile = {
   availability: "협업 가능 여부 정보 준비 중",
 };
 
+export const heroLinks: HeroLink[] = [
+  { label: "GitHub", href: "https://github.com/ddoniddoni", external: true },
+  { label: "경력", href: "/about" },
+  { label: "프로젝트", href: "/projects" },
+  { label: "이메일", href: `mailto:${profile.email}` },
+];
+
+export const aboutPreview: AboutPreview = {
+  eyebrow: "About me",
+  statement:
+    "사용자 경험을 기술로 구현하는 프론트엔드 개발자입니다.\n단순히 화면을 구현하는 것을 넘어, 사용자가 더 편리하고 자연스럽게 서비스를 이용할 수 있는 방법을 고민합니다.\n좋은 사용자 경험과 안정적인 개발 사이의 균형을 중요하게 생각하며,\n더 나은 제품을 만들기 위해 끊임없이 고민하고 개선합니다.",
+};
+
 export const careerSummary = "총 4년 5개월";
+
+export const skillsTicker: SkillTickerItem[] = [
+  { label: "React", icon: "react" },
+  { label: "Next.js", icon: "nextjs" },
+  { label: "TypeScript", icon: "typescript" },
+  { label: "WebSocket", icon: "websocket" },
+  { label: "Angular", icon: "angular" },
+  { label: "SCSS", icon: "sass" },
+  { label: "Browser Testing", icon: "browser-testing" },
+];
+
+export const expertiseAreas: ExpertiseArea[] = [
+  {
+    id: "realtime-interface",
+    title: "실시간 인터페이스",
+    description:
+      "WebSocket 이벤트와 화면 상태를 연결해 변경된 정보만 빠르게 갱신하는 사용자 경험을 설계합니다.",
+  },
+  {
+    id: "frontend-architecture",
+    title: "프론트엔드 아키텍처",
+    description:
+      "React·Next.js·TypeScript 환경에서 화면과 상태의 책임을 나누고, 기능 변경에 견디는 구조를 만듭니다.",
+  },
+  {
+    id: "operations-visualization",
+    title: "운영 화면 시각화",
+    description:
+      "장비 상태와 배치 데이터를 한 화면에서 읽을 수 있도록 정보 구조와 시각적 우선순위를 구성합니다.",
+  },
+];
 
 export const career: CareerEntry[] = [
   {

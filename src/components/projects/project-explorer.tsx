@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { ProjectCard } from "@/components/projects/project-card";
+import { SearchIcon } from "@/components/ui/icons";
 import {
   projectCategoryLabels,
   type Project,
@@ -162,15 +163,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
           ref={searchButtonRef}
           type="button"
         >
-          <svg
-            aria-hidden="true"
-            className="search-icon"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="11" cy="11" r="6.5" />
-            <path d="m16 16 4 4" />
-          </svg>
+          <SearchIcon className="search-icon" />
           <span>Search</span>
         </button>
         <div
@@ -213,15 +206,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
               프로젝트 검색
             </h2>
             <div className="search-dialog__header">
-              <svg
-                aria-hidden="true"
-                className="search-icon"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="11" cy="11" r="6.5" />
-                <path d="m16 16 4 4" />
-              </svg>
+              <SearchIcon className="search-icon" />
               <input
                 aria-label="프로젝트 검색"
                 autoFocus

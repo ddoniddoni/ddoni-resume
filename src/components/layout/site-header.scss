@@ -4,7 +4,7 @@
   inset-block-start: 0;
   z-index: 30;
   margin-inline: auto;
-  padding-block: 1rem;
+  padding-block: 16px;
   padding-inline: 0;
   inline-size: min(100%, 1024px);
   background: transparent;
@@ -15,11 +15,11 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 1rem;
+    gap: 16px;
     margin-inline: auto;
-    padding-block: 0.25rem;
-    padding-inline: 1rem 1.5rem;
-    block-size: 3rem;
+    padding-block: 4px;
+    padding-inline: 16px 24px;
+    block-size: 48px;
     min-block-size: 0;
     inline-size: 100%;
     border: 0;
@@ -41,7 +41,7 @@
     grid-column: 1;
     inline-size: fit-content;
     font-family: var(--display-font);
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: 1.4;
@@ -51,15 +51,75 @@
     display: flex;
     grid-column: 2;
     align-items: center;
-    gap: clamp(1.25rem, 2.4vw, 2rem);
+    gap: clamp(20px, 2.4vw, 32px);
+  }
+
+  .theme-toggle {
+    position: relative;
+    display: grid;
+    grid-column: 3;
+    justify-self: end;
+    padding: 0;
+    block-size: 40px;
+    inline-size: 40px;
+    color: var(--paper);
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    transition: color 150ms ease, transform 150ms ease;
+    place-items: center;
+
+    &:hover {
+      background: var(--ink-raised);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .theme-toggle__icon {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    display: grid;
+    block-size: 20px;
+    inline-size: 20px;
+    transform: scale(0.5) rotate(-180deg);
+    transition: opacity 360ms ease, transform 360ms ease;
+    place-items: center;
+
+    &--moon {
+      opacity: 1;
+      transform: scale(1) rotate(0);
+    }
+
+    svg {
+      block-size: 18px;
+      inline-size: 18px;
+      stroke: currentcolor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+  }
+
+  :root[data-theme="light"] .theme-toggle__icon--sun {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+
+  :root[data-theme="light"] .theme-toggle__icon--moon {
+    opacity: 0;
+    transform: scale(0.5) rotate(-180deg);
   }
 
   .site-nav__link {
     position: relative;
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 400;
     color: var(--paper-muted);
-    line-height: 1.25rem;
+    line-height: 20px;
     transition: color 150ms ease;
 
     &::after {
@@ -67,9 +127,9 @@
       opacity: 0;
       position: absolute;
       inset-block-start: 50%;
-      inset-inline-start: -0.78rem;
-      block-size: 0.35rem;
-      inline-size: 0.35rem;
+      inset-inline-start: -12.48px;
+      block-size: 5.6px;
+      inline-size: 5.6px;
       border-radius: 50%;
       background: var(--signal);
       transform: translateY(-50%) scale(0.5);
@@ -92,7 +152,7 @@
     overflow: hidden;
     position: relative;
     display: inline-flex;
-    block-size: 1.25rem;
+    block-size: 20px;
   }
 
   .rolling-text__primary,
@@ -117,83 +177,21 @@
     transform: translateY(0) skewY(0);
   }
 
-  .theme-toggle {
-    position: relative;
-    display: grid;
-    grid-column: 3;
-    justify-self: end;
-    padding: 0;
-    block-size: 2.5rem;
-    inline-size: 2.5rem;
-    color: var(--paper);
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-    transition: background-color 150ms ease, transform 150ms ease;
-    place-items: center;
-
-    &:hover {
-      background: var(--ink-soft);
-    }
-
-    &:active {
-      transform: scale(0.9);
-    }
-  }
-
-  .theme-icon {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
-    place-items: center;
-
-    svg {
-      block-size: 1.125rem;
-      inline-size: 1.125rem;
-      stroke: currentcolor;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 2;
-    }
-  }
-
-  .theme-icon--sun {
-    opacity: 0;
-    transform: scale(0.5) rotate(-180deg);
-  }
-
-  .theme-icon--moon {
-    opacity: 1;
-    transform: none;
-  }
-
-  :root[data-theme="light"] .theme-icon--sun {
-    opacity: 1;
-    transform: none;
-  }
-
-  :root[data-theme="light"] .theme-icon--moon {
-    opacity: 0;
-    transform: scale(0.5) rotate(-180deg);
-  }
-
   .mobile-nav {
     display: none;
   }
 
 @media (width <= 639px) {
   .site-header {
-    padding-block: 0.5rem;
+    padding-block: 8px;
     padding-inline: 0;
     inline-size: 100%;
   }
 
     .site-header__inner,
     .site-header[data-compact="true"] .site-header__inner {
-      padding-block: 0.25rem;
-      padding-inline: 1rem;
+      padding-block: 4px;
+      padding-inline: 16px;
       inline-size: 100%;
       border-width: 0;
       background: transparent;
@@ -201,15 +199,8 @@
     }
 
     .brand-mark {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
-
-    .theme-toggle {
-      border: 1px solid var(--line);
-      background: var(--nav-backdrop);
-      box-shadow: 0 0.5rem 1.5rem rgb(0, 0, 0, 18%);
-      backdrop-filter: blur(12px);
+      font-size: 24px;
+      line-height: 32px;
     }
 
     .site-nav {
@@ -222,27 +213,27 @@
       z-index: 40;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      padding-block: 0.45rem calc(0.45rem + env(safe-area-inset-bottom));
-      padding-inline: 0.5rem;
-      block-size: 4.4375rem;
+      padding-block: 7.2px calc(7.2px + env(safe-area-inset-bottom));
+      padding-inline: 8px;
+      block-size: 71px;
       border: 0;
       border-block-start: 1px solid var(--line);
       background: var(--nav-backdrop);
-      box-shadow: 0 -0.5rem 1.5rem rgb(0, 0, 0, 12%);
-      backdrop-filter: blur(1rem);
+      box-shadow: 0 -8px 24px rgb(0, 0, 0, 12%);
+      backdrop-filter: blur(16px);
       inset-inline: 0;
     }
 
   .mobile-nav__link {
     display: grid;
-    padding: 0.4rem;
-    min-block-size: 2.75rem;
+    padding: 6.4px;
+    min-block-size: 44px;
     color: var(--paper-muted);
     place-items: center;
 
     svg {
-      block-size: 1.18rem;
-      inline-size: 1.18rem;
+      block-size: 18.88px;
+      inline-size: 18.88px;
       fill: none;
       stroke: currentcolor;
       stroke-linecap: round;

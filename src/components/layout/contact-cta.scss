@@ -1,6 +1,6 @@
 .contact-cta {
-  margin-block-start: clamp(8rem, 18vw, 14rem);
-  padding-block: clamp(6rem, 12vw, 9rem) clamp(5rem, 10vw, 8rem);
+  margin-block-start: clamp(128px, 18vw, 224px);
+  padding-block: clamp(96px, 12vw, 144px) clamp(80px, 10vw, 128px);
   padding-inline: 0;
   text-align: center;
   border: 0;
@@ -12,25 +12,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 16px;
     margin-inline: auto;
     inline-size: fit-content;
     font-family: var(--mono-font);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 600;
     color: var(--paper-muted);
-    letter-spacing: 0.08em;
+    letter-spacing: 1.28px;
     text-transform: uppercase;
 
     &::before {
       content: "✦";
-      font-size: 1rem;
+      font-size: 16px;
       color: var(--signal);
     }
   }
 
   .contact-cta__title {
-    margin-block: clamp(2rem, 5vw, 3.5rem) 1.5rem;
+    margin-block: clamp(32px, 5vw, 56px) 24px;
     margin-inline: auto;
     max-inline-size: 10ch;
     font-family: var(--display-font);
@@ -59,6 +59,10 @@
     inset-inline: -1px;
   }
 
+  .button--ripple {
+    justify-content: center;
+  }
+
   .button--ripple:hover .button__ripple,
   .button--ripple:focus-visible .button__ripple {
     inset-block-start: -1px;
@@ -70,7 +74,7 @@
     position: relative;
     z-index: 1;
     display: block;
-    block-size: 1.25rem;
+    block-size: 20px;
   }
 
   .button__label-text {
@@ -100,6 +104,6 @@
 
 @media (width <= 639px) {
   .contact-cta__title {
-    inline-size: calc(100% - 2rem);
+    inline-size: calc(100% - 32px);
   }
 }
