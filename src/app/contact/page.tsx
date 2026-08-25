@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import "@/styles/sections/contact.scss";
+import "@/styles/ui/content-panel.scss";
 import { profile } from "@/content/site";
-import "./page.scss";
 
 export const metadata: Metadata = {
   title: "Contact",

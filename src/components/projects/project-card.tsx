@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/content/site";
 import { projectCategoryLabels } from "@/content/site";
-import "./project-card.scss";
+import "@/styles/projects/project-card.scss";
 
 type ProjectCardProps = {
   project: Project;
@@ -16,20 +17,34 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       aria-label={`${project.title} 상세 보기`}
     >
       <div className="project-card__media">
-        <div className={`project-card__visual tone-${project.tone}`}>
-          <div className="project-card__mockup" aria-hidden="true">
-            <div className="project-card__mockup-bar">
-              <span />
-              <span />
-              <span />
+        <div
+          className={`project-card__visual tone-${project.tone}${project.previewImage ? " project-card__visual--image" : ""}`}
+        >
+          {project.previewImage ? (
+            <div className="project-card__preview">
+              <Image
+                alt={project.previewImage.alt}
+                className="project-card__image"
+                fill
+                sizes="(min-width: 1280px) 576px, (min-width: 640px) calc((100vw - 128px) / 2), calc(100vw - 32px)"
+                src={project.previewImage.src}
+              />
             </div>
-            <p>{project.title}</p>
-            <div className="project-card__mockup-grid">
-              <span />
-              <span />
-              <span />
+          ) : (
+            <div className="project-card__mockup" aria-hidden="true">
+              <div className="project-card__mockup-bar">
+                <span />
+                <span />
+                <span />
+              </div>
+              <p>{project.title}</p>
+              <div className="project-card__mockup-grid">
+                <span />
+                <span />
+                <span />
+              </div>
             </div>
-          </div>
+          )}
           <span className="project-card__index" aria-hidden="true">
             {String(index).padStart(2, "0")}
           </span>

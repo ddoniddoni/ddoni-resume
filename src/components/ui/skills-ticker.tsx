@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { SkillTickerIcon } from "@/components/ui/icons";
 import type { SkillTickerItem } from "@/content/site";
-import "./skills-ticker.scss";
+import "@/styles/ui/skills-ticker.scss";
 
 type SkillsTickerProps = {
   skills: SkillTickerItem[];

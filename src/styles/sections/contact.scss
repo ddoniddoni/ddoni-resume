@@ -1,0 +1,25 @@
+.contact-layout {
+  display: grid;
+  gap: clamp(48px, 8vw, 112px);
+}
+
+  .contact-copy {
+    max-inline-size: 608px;
+    color: var(--paper-muted);
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-block-start: 16px;
+    }
+  }
+
+  .notice {
+    padding-block: 12.8px;
+    padding-inline: 16px;
+    color: var(--paper-muted);
+    border-inline-start: 2px solid var(--signal);
+    background: rgb(240, 180, 119, 7%);
+  }

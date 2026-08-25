@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/layout/contact-cta";
+import "@/styles/projects/project-detail.scss";
+import { ProjectToc, type ProjectTocItem } from "@/components/projects/project-toc";
 import {
   getProjectBySlug,
   projectCategoryLabels,
   projects,
   siteConfig,
 } from "@/content/site";
-import "@/components/projects/project-card.scss";
-import "./page.scss";
+
+const projectTocItems: ProjectTocItem[] = [
+  { id: "overview", label: "프로젝트 소개" },
+  { id: "features", label: "주요 기능" },
+  { id: "technologies", label: "사용 기술" },
+  { id: "process", label: "구현 과정" },
+  { id: "outcome", label: "결과" },
+];
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -47,101 +56,168 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const projectIndex = projects.findIndex((item) => item.slug === project.slug);
+  const previousProject = projects[projectIndex - 1];
+  const nextProject = projects[projectIndex + 1];
+  const technologyDetails =
+    project.technologyDetails ?? project.technologies.map((name) => ({ name, description: undefined }));
+  const featuredTechnologies = project.technologies.slice(0, 3);
+  const remainingTechnologyCount = project.technologies.length - featuredTechnologies.length;
+
   return (
-    <main id="main-content" className="page">
-      <Link className="detail-back" href="/projects">
-        <span aria-hidden="true">←</span> All projects
-      </Link>
-
-      <header className="project-detail__hero">
-        <div>
-          <p className="eyebrow">Case study / {project.period}</p>
-          <h1 className="project-detail__title">{project.title}</h1>
-          <p className="project-detail__summary">{project.summary}</p>
+    <main id="main-content" className="page project-detail">
+      <div className="project-detail__frame">
+        <div className="project-detail__breadcrumb-row">
+          <nav aria-label="경로" className="project-detail__breadcrumb">
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">›</span>
+            <Link href="/projects">Projects</Link>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">{project.title}</span>
+          </nav>
+          <time className="project-detail__period">{project.period}</time>
         </div>
-        <div
-          aria-hidden="true"
-          className={`project-card__visual project-detail__visual tone-${project.tone}`}
-        >
-          <div className="project-card__mockup project-detail__mockup">
-            <div className="project-card__mockup-bar">
-              <span />
-              <span />
-              <span />
-            </div>
-            <p>{project.title}</p>
-            <div className="project-card__mockup-grid">
-              <span />
-              <span />
-              <span />
-            </div>
+
+        <header className="project-detail__hero">
+          <div className={`project-detail__media project-detail__media--${project.tone}`}>
+            {project.previewImage ? (
+              <Image
+                alt={project.previewImage.alt}
+                className="project-detail__image"
+                fill
+                priority
+                sizes="(min-width: 1024px) 960px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+                src={project.previewImage.src}
+              />
+            ) : (
+              <div className="project-detail__mockup" aria-hidden="true">
+                <div className="project-detail__mockup-bar">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <p>{project.title}</p>
+                <div className="project-detail__mockup-grid">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </div>
+            )}
           </div>
-          <span className="project-detail__badge">Detail</span>
+
+          <div className="project-detail__headline">
+            <h1>{project.title}</h1>
+            {project.projectUrl && (
+              <a className="project-detail__action" href={project.projectUrl} rel="noreferrer" target="_blank">
+                프로젝트 보기 <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </div>
+
+          <div className="project-detail__brief">
+            <p>{project.summary}</p>
+            <dl>
+              <div>
+                <dt>Role</dt>
+                <dd>{project.role}</dd>
+              </div>
+              <div>
+                <dt>Project</dt>
+                <dd>{project.organization}</dd>
+              </div>
+              <div>
+                <dt>Category</dt>
+                <dd>{project.categories.map((item) => projectCategoryLabels[item]).join(" · ")}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div className="project-detail__technology-summary" aria-label="주요 사용 기술">
+            {featuredTechnologies.map((technology) => (
+              <span key={technology}>{technology}</span>
+            ))}
+            {remainingTechnologyCount > 0 && <span>+{remainingTechnologyCount}</span>}
+          </div>
+        </header>
+
+        <div className="project-detail__content-grid">
+          <article className="project-detail__article">
+            <section id="overview">
+              <h2>프로젝트 소개</h2>
+              {project.background.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </section>
+
+            <section id="features">
+              <h2>주요 기능</h2>
+              <ul className="project-detail__list">
+                {project.outcome.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="technologies">
+              <h2>사용 기술</h2>
+              <ul className="project-detail__technology-list">
+                {technologyDetails.map((technology) => (
+                  <li key={technology.name}>
+                    <strong>{technology.name}</strong>
+                    {technology.description && <span> — {technology.description}</span>}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="process">
+              <h2>구현 과정</h2>
+              <ul className="project-detail__list">
+                {project.process.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="outcome">
+              <h2>결과</h2>
+              <ul className="project-detail__list">
+                {project.outcome.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          </article>
+
+          <ProjectToc
+            items={projectTocItems}
+            projectUrl={project.projectUrl}
+            repositoryUrl={project.repositoryUrl}
+          />
         </div>
-      </header>
 
-      <section className="project-detail__facts" aria-labelledby="project-facts-title">
-        <h2 id="project-facts-title" className="eyebrow">
-          Project facts
-        </h2>
-        <dl className="detail-facts">
-          <div>
-            <dt>Organization</dt>
-            <dd>{project.organization}</dd>
-          </div>
-          <div>
-            <dt>Role</dt>
-            <dd>{project.role}</dd>
-          </div>
-          <div>
-            <dt>Period</dt>
-            <dd>{project.period}</dd>
-          </div>
-          <div>
-            <dt>Category</dt>
-            <dd>{project.categories.map((item) => projectCategoryLabels[item]).join(" · ")}</dd>
-          </div>
-        </dl>
-      </section>
+        {(previousProject || nextProject) && (
+          <nav aria-label="인접 프로젝트" className="project-detail__pagination">
+            {previousProject ? (
+              <Link href={`/projects/${previousProject.slug}`}>
+                <span>Previous project</span>
+                <strong>{previousProject.title}</strong>
+              </Link>
+            ) : (
+              <span aria-hidden="true" />
+            )}
+            {nextProject && (
+              <Link href={`/projects/${nextProject.slug}`}>
+                <span>Next project</span>
+                <strong>{nextProject.title}</strong>
+              </Link>
+            )}
+          </nav>
+        )}
 
-      <article className="detail-content">
-        <section aria-labelledby="background-title">
-          <p className="eyebrow">01 / Background</p>
-          <h2 id="background-title">시작점</h2>
-          {project.background.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </section>
-        <section aria-labelledby="process-title">
-          <p className="eyebrow">02 / Process</p>
-          <h2 id="process-title">작업 과정</h2>
-          <ul>
-            {project.process.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-        <section aria-labelledby="tools-title">
-          <p className="eyebrow">03 / Toolkit</p>
-          <h2 id="tools-title">사용 기술</h2>
-          <ul className="detail-tags">
-            {project.technologies.map((technology) => (
-              <li key={technology}>{technology}</li>
-            ))}
-          </ul>
-        </section>
-        <section aria-labelledby="outcome-title">
-          <p className="eyebrow">04 / Outcome</p>
-          <h2 id="outcome-title">결과</h2>
-          <ul>
-            {project.outcome.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-      </article>
-
-      <ContactCta />
+        <ContactCta />
+      </div>
     </main>
   );
 }

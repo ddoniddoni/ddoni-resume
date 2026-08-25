@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { ContactCta } from "@/components/layout/contact-cta";
+import "@/styles/sections/profile.scss";
+import "@/styles/ui/content-panel.scss";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { career, careerSummary, profile } from "@/content/site";
-import "./page.scss";
 
 export const metadata: Metadata = {
   title: "About",

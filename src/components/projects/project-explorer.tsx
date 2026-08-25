@@ -15,7 +15,7 @@ import {
   type Project,
   type ProjectCategory,
 } from "@/content/site";
-import "./project-explorer.scss";
+import "@/styles/projects/project-explorer.scss";
 
 type Filter = "all" | ProjectCategory;
 

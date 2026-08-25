@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import "./smooth-scroll.scss";
+import "@/styles/ui/smooth-scroll.scss";
 
 export function SmoothScroll() {
   useEffect(() => {

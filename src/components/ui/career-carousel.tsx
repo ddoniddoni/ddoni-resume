@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { CareerEntry } from "@/content/site";
-import "./career-carousel.scss";
+import "@/styles/ui/career-carousel.scss";
 
 type CareerCarouselProps = {
   entries: CareerEntry[];

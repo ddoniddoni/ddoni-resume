@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { NavigationIcon, ThemeIcon } from "@/components/ui/icons";
 import { navigation, siteConfig } from "@/content/site";
-import "./site-header.scss";
+import "@/styles/layout/site-header.scss";
 
 const themeStorageKey = "ddoni-resume-theme";
 

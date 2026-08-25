@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { ContactCta } from "@/components/layout/contact-cta";
 import { ProjectExplorer } from "@/components/projects/project-explorer";
+import "@/styles/projects/project-index.scss";
 import { projects } from "@/content/site";
-import "./page.scss";
 
 export const metadata: Metadata = {
   title: "Projects",

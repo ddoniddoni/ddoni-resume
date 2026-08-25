@@ -1,4 +1,4 @@
-import "./section-heading.scss";
+import "@/styles/ui/section-heading.scss";
 
 type SectionHeadingProps = {
   eyebrow: string;
