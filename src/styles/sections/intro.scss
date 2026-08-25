@@ -6,6 +6,10 @@
   inline-size: 100%;
 }
 
+  .page--home .contact-cta {
+    margin-block-start: clamp(43px, 6vw, 75px);
+  }
+
   .hero {
     display: grid;
     gap: 48px;
