@@ -1,121 +1,124 @@
 .page--about {
-  padding-block-start: clamp(40px, 7vw, 96px);
+  padding-block-start: 40px;
 }
 
-  .about-hero {
-    display: grid;
-    gap: 24px;
-  }
+.about-hero {
+  display: grid;
+  gap: 56px;
+}
 
-  .about-hero__profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-block: 28px;
-    padding-inline: 24px;
-    min-block-size: 376px;
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    background:
-      linear-gradient(145deg, rgb(181, 255, 109, 14%), transparent 42%),
-      var(--ink-raised);
-  }
+.about-hero__profile {
+  position: relative;
+  padding-inline-end: 36px;
+}
 
-  .about-hero__profile .eyebrow {
-    margin: 0;
-    color: var(--signal);
-  }
+.about-hero__photo-frame {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 0.76;
+  border-radius: 0 0 144px 144px;
+  background: var(--ink-raised);
+}
 
-  .about-hero__monogram {
-    margin: 32px 0;
-    font-family: var(--display-font);
-    font-size: clamp(72px, 20vw, 128px);
-    font-weight: 500;
-    color: var(--paper);
-    letter-spacing: -5px;
-    line-height: 0.75;
-  }
+.about-hero__photo {
+  object-fit: cover;
+  object-position: center top;
+}
 
-  .about-hero__facts {
-    display: grid;
-    gap: 12px;
-    margin: 0;
-  }
+.about-hero__contact-disc {
+  overflow: hidden;
+  position: absolute;
+  inset-block-end: -44px;
+  inset-inline-end: 0;
+  display: grid;
+  inline-size: 112px;
+  aspect-ratio: 1;
+  color: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--ink-raised);
+  box-shadow: 0 16px 32px rgb(0, 0, 0, 20%);
+  transition: background-color 200ms ease, color 200ms ease, transform 320ms ease;
+  place-items: center;
+}
 
-  .about-hero__facts div {
-    display: grid;
-    grid-template-columns: 76px minmax(0, 1fr);
-    gap: 16px;
-    padding-block-start: 12px;
-    border-block-start: 1px solid var(--line);
-  }
+.about-hero__contact-disc:hover {
+  color: var(--ink);
+  background: var(--signal);
+  transform: rotate(18deg);
+}
 
-  .about-hero__facts dt,
-  .about-hero__facts dd {
-    margin: 0;
-  }
+.about-hero__contact-orbit {
+  position: absolute;
+  inset: 0;
+  block-size: 100%;
+  inline-size: 100%;
+}
 
-  .about-hero__facts dt {
-    font-family: var(--mono-font);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--paper-muted);
-    letter-spacing: 0.8px;
-    line-height: 1.35;
-    text-transform: uppercase;
-  }
+.about-hero__contact-orbit text {
+  font-family: var(--mono-font);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
-  .about-hero__facts dd {
-    min-inline-size: 0;
-    font-size: 14px;
-    color: var(--paper);
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-  }
+.about-hero__contact-arrow {
+  display: grid;
+  inline-size: 46px;
+  aspect-ratio: 1;
+  font-size: 22px;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: var(--ink-raised);
+  transition: background-color 200ms ease, transform 320ms ease;
+  place-items: center;
+}
 
-  .about-hero__facts a {
-    text-decoration: underline;
-    text-decoration-color: color-mix(in srgb, var(--signal) 58%, transparent);
-    text-underline-offset: 4px;
-  }
+.about-hero__contact-disc:hover .about-hero__contact-arrow {
+  background: transparent;
+  transform: rotate(-18deg);
+}
 
-  .about-hero__content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding-block: 24px;
-  }
+.about-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
 
-  .about-hero__content .eyebrow {
-    margin: 0;
-    color: var(--signal);
-  }
+.about-hero__content .eyebrow {
+  margin: 0;
+  color: var(--signal);
+}
 
-  .about-hero__content h1 {
-    margin: 28px 0 0;
-    font-family: var(--display-font);
-    font-size: clamp(48px, 8vw, 72px);
-    font-weight: 500;
-    color: var(--paper);
-    letter-spacing: -2px;
-    line-height: 1;
-    text-wrap: balance;
-    word-break: keep-all;
-  }
+.about-hero__content h1 {
+  margin: 24px 0 0;
+  font-family: var(--display-font);
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 500;
+  color: var(--paper);
+  letter-spacing: -2.4px;
+  line-height: 0.98;
+  text-wrap: balance;
+  word-break: keep-all;
+}
 
-  .about-hero__description {
-    margin: 28px 0 0;
-    max-inline-size: 560px;
-    font-size: 17px;
-    color: var(--paper-muted);
-    line-height: 1.5;
-    word-break: keep-all;
-  }
+.about-hero__content h1 span {
+  color: var(--signal);
+}
 
-  .about-hero__cta {
-    margin-block-start: 32px;
-  }
+.about-hero__description {
+  margin: 32px 0 0;
+  max-inline-size: 600px;
+  font-size: 18px;
+  color: var(--paper-muted);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.about-hero__cta {
+  margin-block-start: 36px;
+}
 
   .page--about .skills-ticker {
     margin-inline: calc((100vw - 100%) / -2);
@@ -317,25 +320,31 @@
   }
 
 @media (width >= 640px) {
-    .about-hero {
-      grid-template-columns: minmax(280px, 0.65fr) minmax(0, 1fr);
-      gap: 48px;
-    }
+  .about-hero {
+    grid-template-columns: minmax(280px, 0.76fr) minmax(0, 1.24fr);
+    align-items: center;
+    gap: 64px;
+  }
 
-    .about-hero__profile {
-      min-block-size: 480px;
-    }
+  .about-hero__profile {
+    padding-inline-end: 48px;
+    max-inline-size: 440px;
+  }
 
-    .about-hero__monogram {
-      font-size: clamp(88px, 14vw, 160px);
-    }
+  .about-hero__photo-frame {
+    border-radius: 0 0 180px 180px;
+  }
 
-    .about-career-entry__details {
-      padding-inline-start: 56px;
-    }
+  .about-hero__contact-disc {
+    inline-size: 128px;
+  }
 
-    .about-principles {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  .about-career-entry__details {
+    padding-inline-start: 56px;
+  }
+
+  .about-principles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -363,22 +372,16 @@
   }
 
   .about-hero {
-    grid-template-columns: minmax(360px, 0.8fr) minmax(0, 1.2fr);
-    gap: 80px;
+    grid-template-columns: minmax(360px, 0.78fr) minmax(0, 1.22fr);
+    gap: 96px;
   }
 
   .about-hero__profile {
-    padding-block: 36px;
-    padding-inline: 32px;
-    min-block-size: 560px;
+    padding-inline-end: 56px;
   }
 
   .about-hero__content {
-    padding-block: 48px;
-  }
-
-  .about-hero__content h1 {
-    font-size: clamp(60px, 5.4vw, 76px);
+    padding-block: 0;
   }
 
   .about-work-history,

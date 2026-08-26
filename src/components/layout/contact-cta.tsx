@@ -5,8 +5,8 @@ export function ContactCta() {
   return (
     <section className="contact-cta" aria-labelledby="contact-cta-title">
       <div className="contact-cta__topline">
-        <span>Contact</span>
-        <span>Open to the next brief</span>
+        <span>연락</span>
+        <span>다음 작업을 준비하고 있습니다</span>
       </div>
       <h2 id="contact-cta-title" className="contact-cta__title">
         다음 작업을 함께

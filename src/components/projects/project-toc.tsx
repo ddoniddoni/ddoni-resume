@@ -48,7 +48,7 @@ export function ProjectToc({ items, projectUrl, repositoryUrl }: ProjectTocProps
     <aside className="project-toc" aria-label="프로젝트 목차">
       <p className="project-toc__title">
         <span aria-hidden="true">☰</span>
-        On this page
+        이 페이지의 내용
       </p>
       <nav className="project-toc__nav" aria-label="페이지 내 이동">
         {items.map((item) => (
@@ -63,10 +63,10 @@ export function ProjectToc({ items, projectUrl, repositoryUrl }: ProjectTocProps
       </nav>
       {(projectUrl || repositoryUrl) && (
         <div className="project-toc__links" aria-label="프로젝트 링크">
-          <p>Project links</p>
+          <p>프로젝트 링크</p>
           {projectUrl && (
             <a href={projectUrl} rel="noreferrer" target="_blank">
-              Live site <span aria-hidden="true">↗</span>
+              체험 사이트 <span aria-hidden="true">↗</span>
             </a>
           )}
           {repositoryUrl && (

@@ -119,6 +119,24 @@ export function SearchIcon(props: IconProps) {
   );
 }
 
+export function ContactOrbitIcon(props: IconProps) {
+  return (
+    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 120 120" {...props}>
+      <defs>
+        <path
+          d="M60 60m-47 0a47 47 0 1 1 94 0 47 47 0 1 1-94 0"
+          id="contact-orbit-path"
+        />
+      </defs>
+      <text>
+        <textPath href="#contact-orbit-path">
+          이메일 • 연락하기 • 이메일 • 연락하기 •
+        </textPath>
+      </text>
+    </svg>
+  );
+}
+
 export function SkillTickerIcon({
   iconName,
   style,

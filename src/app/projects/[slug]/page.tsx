@@ -69,9 +69,9 @@ export default async function ProjectDetailPage({
       <div className="project-detail__frame">
         <div className="project-detail__breadcrumb-row">
           <nav aria-label="경로" className="project-detail__breadcrumb">
-            <Link href="/">Home</Link>
+            <Link href="/">홈</Link>
             <span aria-hidden="true">›</span>
-            <Link href="/projects">Projects</Link>
+            <Link href="/projects">프로젝트</Link>
             <span aria-hidden="true">›</span>
             <span aria-current="page">{project.title}</span>
           </nav>
@@ -85,7 +85,7 @@ export default async function ProjectDetailPage({
                 alt={project.previewImage.alt}
                 className="project-detail__image"
                 fill
-                priority
+                preload
                 sizes="(min-width: 1024px) 960px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
                 src={project.previewImage.src}
               />
@@ -119,15 +119,15 @@ export default async function ProjectDetailPage({
             <p>{project.summary}</p>
             <dl>
               <div>
-                <dt>Role</dt>
+                <dt>역할</dt>
                 <dd>{project.role}</dd>
               </div>
               <div>
-                <dt>Project</dt>
+                <dt>소속</dt>
                 <dd>{project.organization}</dd>
               </div>
               <div>
-                <dt>Category</dt>
+                <dt>구분</dt>
                 <dd>{project.categories.map((item) => projectCategoryLabels[item]).join(" · ")}</dd>
               </div>
             </dl>
@@ -201,7 +201,7 @@ export default async function ProjectDetailPage({
           <nav aria-label="인접 프로젝트" className="project-detail__pagination">
             {previousProject ? (
               <Link href={`/projects/${previousProject.slug}`}>
-                <span>Previous project</span>
+                <span>이전 프로젝트</span>
                 <strong>{previousProject.title}</strong>
               </Link>
             ) : (
@@ -209,7 +209,7 @@ export default async function ProjectDetailPage({
             )}
             {nextProject && (
               <Link href={`/projects/${nextProject.slug}`}>
-                <span>Next project</span>
+                <span>다음 프로젝트</span>
                 <strong>{nextProject.title}</strong>
               </Link>
             )}
