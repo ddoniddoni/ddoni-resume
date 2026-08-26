@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/content/site";
 import { projectCategoryLabels } from "@/content/site";
+import { ProjectCardMockup } from "@/components/projects/project-card-mockup";
 import "@/styles/projects/project-card.scss";
 
 type ProjectCardProps = {
@@ -26,24 +27,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 alt={project.previewImage.alt}
                 className="project-card__image"
                 fill
+                loading={project.slug === "tripmate" ? "eager" : "lazy"}
                 sizes="(min-width: 1280px) 576px, (min-width: 640px) calc((100vw - 128px) / 2), calc(100vw - 32px)"
                 src={project.previewImage.src}
               />
             </div>
           ) : (
-            <div className="project-card__mockup" aria-hidden="true">
-              <div className="project-card__mockup-bar">
-                <span />
-                <span />
-                <span />
-              </div>
-              <p>{project.title}</p>
-              <div className="project-card__mockup-grid">
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
+            <ProjectCardMockup kind={project.cardMockup} title={project.title} />
           )}
           <span className="project-card__index" aria-hidden="true">
             {String(index).padStart(2, "0")}

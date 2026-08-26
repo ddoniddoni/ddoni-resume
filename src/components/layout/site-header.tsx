@@ -95,7 +95,7 @@ export function SiteHeader() {
     <header className="site-header" data-compact={isCompact ? "true" : "false"}>
       <div className="site-header__inner">
         <Link className="brand-mark" href="/" aria-label={`${siteConfig.name} 홈`}>
-          DD
+          SD
         </Link>
         <nav className="site-nav" aria-label="주요 메뉴">
           {navigation.map((item) => {

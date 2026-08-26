@@ -1,9 +1,12 @@
 import type { SVGProps } from "react";
 import {
   siAngular,
+  siNestjs,
   siNextdotjs,
   siReact,
   siSass,
+  siTailwindcss,
+  siTanstack,
   siTypescript,
   type SimpleIcon,
 } from "simple-icons";
@@ -11,22 +14,27 @@ import type { SkillTickerIcon as SkillTickerIconName } from "@/content/site";
 
 type IconProps = Omit<SVGProps<SVGSVGElement>, "children">;
 
-type BrandIconName = Exclude<SkillTickerIconName, "browser-testing" | "websocket">;
+type BrandIconName = Exclude<SkillTickerIconName, "websocket">;
 
 const brandIcons: Record<BrandIconName, SimpleIcon> = {
   angular: siAngular,
+  nestjs: siNestjs,
   nextjs: siNextdotjs,
   react: siReact,
   sass: siSass,
+  tailwindcss: siTailwindcss,
+  "tanstack-query": siTanstack,
   typescript: siTypescript,
 };
 
 const skillIconColors: Record<SkillTickerIconName, string> = {
   angular: "#DD0031",
-  "browser-testing": "#2EAD33",
+  nestjs: `#${siNestjs.hex}`,
   nextjs: "#FFFFFF",
   react: `#${siReact.hex}`,
   sass: `#${siSass.hex}`,
+  tailwindcss: `#${siTailwindcss.hex}`,
+  "tanstack-query": "#FF4154",
   typescript: `#${siTypescript.hex}`,
   websocket: "#0EA5E9",
 };
@@ -130,15 +138,6 @@ export function SkillTickerIcon({
         <circle cx="19" cy="6" r="2" />
         <circle cx="19" cy="18" r="2" />
         <path d="m6.8 11 10.2-4M6.8 13l10.2 4" />
-      </svg>
-    );
-  }
-
-  if (iconName === "browser-testing") {
-    return (
-      <svg aria-hidden="true" style={iconStyle} viewBox="0 0 24 24" {...props}>
-        <rect x="3" y="4" width="18" height="16" rx="2" />
-        <path d="M3 8h18M8 14l2.25 2.25L16 11" />
       </svg>
     );
   }

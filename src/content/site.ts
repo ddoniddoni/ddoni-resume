@@ -1,10 +1,12 @@
-export type ProjectCategory = "development" | "design";
+export type ProjectCategory = "personal" | "professional";
 export type ProjectTone = "clay" | "sage" | "sky" | "plum" | "sand";
 
 export type ProjectPreviewImage = {
   src: string;
   alt: string;
 };
+
+export type ProjectCardMockupKind = "social" | "translation" | "rack" | "topology";
 
 export type ProjectTechnology = {
   name: string;
@@ -22,6 +24,7 @@ export type Project = {
   technologies: string[];
   technologyDetails?: ProjectTechnology[];
   tone: ProjectTone;
+  cardMockup?: ProjectCardMockupKind;
   previewImage?: ProjectPreviewImage;
   projectUrl?: string;
   repositoryUrl?: string;
@@ -72,12 +75,20 @@ export type ExpertiseArea = {
   description: string;
 };
 
+// FAQ 콘텐츠 확정 시 사용한다.
+// export type ContactFaq = {
+//   question: string;
+//   answer: string;
+// };
+
 export type SkillTickerIcon =
   | "angular"
-  | "browser-testing"
+  | "nestjs"
   | "nextjs"
   | "react"
   | "sass"
+  | "tailwindcss"
+  | "tanstack-query"
   | "typescript"
   | "websocket";
 
@@ -104,19 +115,19 @@ export const profile: Profile = {
 
 export const heroLinks: HeroLink[] = [
   { label: "GitHub", href: "https://github.com/ddoniddoni", external: true },
+  { label: "블로그", href: "https://velog.io/@psdkey/posts", external: true },
   { label: "경력", href: "/about" },
   { label: "프로젝트", href: "/projects" },
-  { label: "이메일", href: `mailto:${profile.email}` },
 ];
 
 export const aboutPreview: AboutPreview = {
-  eyebrow: "About me",
+  eyebrow: "소개",
   statement:
     "사용자 경험을 기술로 구현하는 프론트엔드 개발자입니다.\n단순히 화면을 구현하는 것을 넘어, 사용자가 더 편리하고 자연스럽게 서비스를 이용할 수 있는 방법을 고민합니다.\n좋은 사용자 경험과 안정적인 개발 사이의 균형을 중요하게 생각하며,\n더 나은 제품을 만들기 위해 끊임없이 고민하고 개선합니다.",
 };
 
 export const workShowcase: WorkShowcase = {
-  eyebrow: "My work",
+  eyebrow: "주요 작업",
   title: "주요 프로젝트",
   description:
     "실시간 서비스, 사용자 기능, 다국어 자동화, 인프라 운영 시각화까지 문제의 맥락과 구현 과정을 기록합니다.",
@@ -128,33 +139,58 @@ export const careerSummary = "총 4년 5개월";
 export const skillsTicker: SkillTickerItem[] = [
   { label: "React", icon: "react" },
   { label: "Next.js", icon: "nextjs" },
+  { label: "NestJS", icon: "nestjs" },
   { label: "TypeScript", icon: "typescript" },
   { label: "WebSocket", icon: "websocket" },
   { label: "Angular", icon: "angular" },
   { label: "SCSS", icon: "sass" },
-  { label: "Browser Testing", icon: "browser-testing" },
+  { label: "Tailwind CSS", icon: "tailwindcss" },
+  { label: "TanStack Query", icon: "tanstack-query" },
 ];
 
 export const expertiseAreas: ExpertiseArea[] = [
   {
-    id: "realtime-interface",
-    title: "실시간 인터페이스",
+    id: "structure-and-scalability",
+    title: "구조와 확장성",
     description:
-      "WebSocket 이벤트와 화면 상태를 연결해 변경된 정보만 빠르게 갱신하는 사용자 경험을 설계합니다.",
+      "컴포넌트와 상태의 책임을 명확하게 나누고, 기능의 추가와 변경에 유연하게 대응할 수 있는 구조를 설계합니다. 공통 로직과 UI를 적절히 분리해 유지보수성과 개발 효율을 높입니다.",
   },
   {
-    id: "frontend-architecture",
-    title: "프론트엔드 아키텍처",
+    id: "performance-and-experience",
+    title: "성능과 사용자 경험",
     description:
-      "React·Next.js·TypeScript 환경에서 화면과 상태의 책임을 나누고, 기능 변경에 견디는 구조를 만듭니다.",
+      "렌더링과 데이터 요청, 리소스 로딩 과정에서 발생하는 병목을 확인하고 사용자가 실제로 체감하는 속도를 개선합니다. 로딩·오류·빈 상태와 같은 다양한 상황까지 고려해 자연스러운 사용 흐름을 만듭니다.",
   },
   {
-    id: "operations-visualization",
-    title: "운영 화면 시각화",
+    id: "stability-and-quality",
+    title: "안정성과 품질",
     description:
-      "장비 상태와 배치 데이터를 한 화면에서 읽을 수 있도록 정보 구조와 시각적 우선순위를 구성합니다.",
+      "예외 상황과 변경 가능성을 고려해 안정적으로 운영할 수 있는 프론트엔드를 구현합니다. 타입 안정성, 일관된 코드 구조와 적절한 테스트를 통해 오류 가능성을 줄이고 서비스의 품질을 유지합니다.",
   },
 ];
+
+// export const contactFaqs: ContactFaq[] = [
+//   {
+//     question: "어떤 협업을 이야기할 수 있나요?",
+//     answer:
+//       "React, Next.js, TypeScript 기반의 화면 개발과 사용자 기능 개선, 서비스 리뉴얼에 관한 협업을 이야기할 수 있습니다.",
+//   },
+//   {
+//     question: "처음 연락할 때 어떤 내용을 알려주면 좋을까요?",
+//     answer:
+//       "프로젝트의 목표와 현재 상황, 예상 일정, 필요한 역할을 함께 알려주시면 맥락을 빠르게 파악하는 데 도움이 됩니다.",
+//   },
+//   {
+//     question: "문의는 어떤 방식으로 전달되나요?",
+//     answer:
+//       "양식을 작성하면 사용 중인 메일 앱이 열리고, 입력한 이름·회신 이메일·문의 내용이 메일 초안에 자동으로 채워집니다.",
+//   },
+//   {
+//     question: "이전 작업은 어디에서 볼 수 있나요?",
+//     answer:
+//       "프로젝트 페이지에서 개인 프로젝트와 실무 프로젝트의 문제 맥락, 구현 과정, 사용 기술을 확인할 수 있습니다.",
+//   },
+// ];
 
 export const career: CareerEntry[] = [
   {
@@ -196,15 +232,15 @@ export const career: CareerEntry[] = [
 ];
 
 export const navigation = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "홈" },
+  { href: "/about", label: "소개" },
+  { href: "/projects", label: "프로젝트" },
+  { href: "/contact", label: "연락" },
 ] as const;
 
 export const projectCategoryLabels: Record<ProjectCategory, string> = {
-  development: "Development",
-  design: "Design",
+  personal: "개인 프로젝트",
+  professional: "실무 프로젝트",
 };
 
 export const projects: Project[] = [
@@ -215,7 +251,7 @@ export const projects: Project[] = [
       "AI 여행 일정 생성부터 장소 탐색, 일정 편집, 지도 동선, 준비물과 공동 경비까지 한 화면에서 관리하는 실시간 협업 여행 플래너입니다.",
     organization: "개인 프로젝트",
     period: "2026",
-    categories: ["development"],
+    categories: ["personal"],
     role: "프론트엔드 설계 · 실시간 협업 기능 구현 · 풀스택 연동",
     technologies: [
       "Next.js 16",
@@ -279,7 +315,7 @@ export const projects: Project[] = [
       "고객 문의 접수부터 처리·답변까지의 흐름을 관리하고, AI가 문의 맥락과 우선순위를 정리해 주는 고객지원 운영 대시보드입니다.",
     organization: "개인 프로젝트",
     period: "2026",
-    categories: ["development"],
+    categories: ["personal"],
     role: "운영 SaaS 화면 설계 · 역할별 고객지원 워크플로우 구현 · AI 보조 경험 구축",
     technologies: [
       "Next.js 16",
@@ -336,10 +372,11 @@ export const projects: Project[] = [
     summary: "사용자 생성형 방과 5개 소셜 기능을 API·WebSocket 이벤트와 연결해 하나의 실시간 사용자 흐름으로 구현했습니다.",
     organization: "주식회사더블다운게임즈 (DoubleDownGamesInc.)",
     period: "2024. 06 — 2025. 05",
-    categories: ["development"],
+    categories: ["professional"],
     role: "커스텀 방 및 소셜 기능 개발 · WebSocket 이벤트 처리 구조 설계 · API와 실시간 상태 동기화",
     technologies: ["Next.js", "React", "TypeScript", "WebSocket", "Recoil", "SCSS"],
     tone: "sky",
+    cardMockup: "social",
     featured: true,
     background: [
       "기존 서비스에서는 사용자가 시스템이 자동으로 생성한 방에만 참여할 수 있었고, 사용자 간 관계를 형성하거나 상호작용할 소셜 기능이 없었습니다.",
@@ -367,10 +404,11 @@ export const projects: Project[] = [
     summary: "번역 키를 중심으로 코드 스캔, Google Sheets 동기화, 다국어 JSON 생성을 연결했습니다.",
     organization: "주식회사더블다운게임즈 (DoubleDownGamesInc.)",
     period: "2024. 06 — 2025. 05",
-    categories: ["development"],
+    categories: ["professional"],
     role: "다국어 문구 관리 표준화 · 번역 키 자동 추출 및 동기화 · JSON 리소스 자동 생성",
     technologies: ["Next.js", "React", "TypeScript", "next-intl", "i18n-scanner", "Google Sheets"],
     tone: "plum",
+    cardMockup: "translation",
     background: [
       "신규 화면과 기능에 문구가 추가될 때마다 10개 언어의 JSON 번역 리소스를 개별적으로 관리해야 했습니다.",
       "번역 키 정리, 파일 전달, 번역 작성, JSON 반영이 반복되며 키 누락과 언어별 데이터 불일치 가능성이 높았고, 기능 완료 후 번역 반영까지 시간이 길어졌습니다.",
@@ -396,10 +434,11 @@ export const projects: Project[] = [
     summary: "Rack 규격과 장비 데이터를 기준으로 위치, 점유 공간, 전원 상태를 한 화면에서 파악할 수 있도록 시각화했습니다.",
     organization: "(주) 나임네트웍스",
     period: "2020. 11 — 2023. 12",
-    categories: ["development"],
+    categories: ["professional"],
     role: "Rack 실장도 화면 개발 · Unit 단위 위치 계산 · 유휴 공간 산출 · 장비 상태 시각화",
     technologies: ["Angular", "TypeScript", "HTML", "SCSS"],
     tone: "sand",
+    cardMockup: "rack",
     featured: true,
     background: [
       "Angular·TypeScript 기반 SDDC 솔루션에서 고객사 서버실의 Rack과 수백 대 장비 정보를 목록으로만 확인하고 있었습니다.",
@@ -427,10 +466,11 @@ export const projects: Project[] = [
     summary: "장비 유형별 컴포넌트와 상태 표시 책임을 분리하고, 변경 장비 중심으로 갱신되는 구성도를 만들었습니다.",
     organization: "(주) 나임네트웍스",
     period: "2020. 11 — 2023. 12",
-    categories: ["development"],
+    categories: ["professional"],
     role: "구성도 UI 리뉴얼 · 장비 유형별 컴포넌트 구조 개선 · 운영 상태 시각화",
     technologies: ["Angular", "TypeScript", "HTML", "SCSS"],
     tone: "sky",
+    cardMockup: "topology",
     background: [
       "기존 SDDC 논리·물리 구성도는 VM, Storage, Switch 등 다양한 장비와 연결 관계를 제공했지만, 장비 유형별 렌더링 분기가 복잡해 신규 장비 추가 시 수정 범위가 컸습니다.",
       "다수 장비가 표시되는 환경에서 전원 OFF, 경고, 중요 알림 장비를 즉시 구분하기 어려워 운영자가 목록과 상세 화면을 반복 탐색해야 했습니다.",

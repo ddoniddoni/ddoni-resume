@@ -1,4 +1,5 @@
 import "@/styles/ui/section-heading.scss";
+import { ShimmerEyebrow } from "@/components/ui/shimmer-eyebrow";
 
 type SectionHeadingProps = {
   eyebrow: string;
@@ -18,7 +19,7 @@ export function SectionHeading({
   return (
     <div className="section-heading">
       <div className="section-heading__topline">
-        <p className="eyebrow">{eyebrow}</p>
+        <ShimmerEyebrow>{eyebrow}</ShimmerEyebrow>
         {count ? <span className="section-heading__count">{count}</span> : null}
       </div>
       <h2 id={id} className="section-heading__title">

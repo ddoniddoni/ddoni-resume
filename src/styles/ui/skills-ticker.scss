@@ -1,6 +1,8 @@
 .skills-ticker {
+  --skills-ticker-gap: clamp(12px, 1.5vw, 22.4px);
+
   overflow: hidden;
-  margin-block: clamp(72px, 10vw, 128px) 0;
+  margin-block: var(--section-space) 0;
   margin-inline: calc(-1 * var(--home-gutter));
   border-block: 1px solid var(--line);
 }
@@ -20,10 +22,10 @@
     display: flex;
     align-items: center;
     flex: none;
-    gap: clamp(12px, 1.5vw, 22.4px);
+    gap: var(--skills-ticker-gap);
     margin: 0;
     padding-block: clamp(10.4px, 1vw, 14.4px);
-    padding-inline: clamp(12px, 1.5vw, 22.4px);
+    padding-inline: 0 var(--skills-ticker-gap);
     list-style: none;
   }
 
@@ -34,7 +36,7 @@
     font-family: var(--display-font);
     font-size: clamp(20.8px, 2.4vw, 36px);
     font-weight: 500;
-    color: var(--ticker-text);
+    color: var(--paper);
     letter-spacing: -0.72px;
     line-height: 1;
     white-space: nowrap;

@@ -24,7 +24,7 @@ type ProjectExplorerProps = {
 };
 
 function filterLabel(filter: Filter) {
-  return filter === "all" ? "All" : projectCategoryLabels[filter];
+  return filter === "all" ? "전체" : projectCategoryLabels[filter];
 }
 
 export function ProjectExplorer({ projects }: ProjectExplorerProps) {
@@ -164,7 +164,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
           type="button"
         >
           <SearchIcon className="search-icon" />
-          <span>Search</span>
+          <span>검색</span>
         </button>
         <div
           className="filter-list"
@@ -212,7 +212,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
                 autoFocus
                 className="search-dialog__input"
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search"
+                placeholder="프로젝트 검색"
                 type="search"
                 value={query}
               />
@@ -227,8 +227,8 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
             </div>
             <div className="search-dialog__body" aria-live="polite">
               <div className="search-dialog__summary">
-                <span>Projects</span>
-                <span>{normalizedQuery ? `${visibleProjects.length} results` : "Type to search"}</span>
+                <span>프로젝트</span>
+                <span>{normalizedQuery ? `${visibleProjects.length}개 결과` : "검색어를 입력하세요"}</span>
               </div>
               {normalizedQuery ? (
                 visibleProjects.length > 0 ? (

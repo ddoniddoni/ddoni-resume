@@ -44,7 +44,6 @@
   --ink-soft: #27272a;
   --paper: #f6f7ff;
   --paper-muted: #c0c0cf;
-  --ticker-text: #2c2c35;
   --line: rgb(246, 247, 255, 14%);
   --line-strong: rgb(246, 247, 255, 24%);
   --signal: #b5ff6d;
@@ -60,6 +59,8 @@
   --type-display-page: 48px;
   --type-display-section: 48px;
   --type-display-detail: 48px;
+  --section-space: 80px;
+  --subsection-space: 48px;
 
   color-scheme: dark;
 }
@@ -70,7 +71,6 @@
   --ink-soft: #e9edf2;
   --paper: #0a0a0a;
   --paper-muted: #0a0a0a;
-  --ticker-text: #cbd5e1;
   --line: #e5e7eb;
   --line-strong: #cbd1da;
   --signal: #30af5b;
@@ -88,6 +88,15 @@
     --type-display-hero: 72px;
     --type-display-page: 72px;
     --type-display-detail: 72px;
+    --section-space: 120px;
+    --subsection-space: 64px;
+  }
+}
+
+@media (width >= 640px) and (width < 1024px) {
+  :root {
+    --section-space: 96px;
+    --subsection-space: 56px;
   }
 }
 
@@ -213,7 +222,7 @@ button {
 }
 
 .section {
-  margin-block-start: clamp(112px, 15vw, 192px);
+  margin-block-start: var(--section-space);
 }
 
 .eyebrow {

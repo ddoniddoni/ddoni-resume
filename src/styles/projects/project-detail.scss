@@ -255,7 +255,7 @@
   .project-detail__content-grid {
     display: grid;
     gap: 32px;
-    margin-block-start: 88px;
+    margin-block-start: var(--section-space);
   }
 
   .project-detail__article {
@@ -263,7 +263,7 @@
   }
 
   .project-detail__article section + section {
-    margin-block-start: 64px;
+    margin-block-start: var(--subsection-space);
     padding-block-start: 32px;
     border-block-start: 1px solid var(--line);
   }
@@ -316,7 +316,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
-    margin-block-start: 104px;
+    margin-block-start: var(--section-space);
     padding-block-start: 32px;
     border-block-start: 1px solid var(--line);
   }
@@ -360,7 +360,6 @@
   }
 
   .project-detail .contact-cta {
-    margin-block-start: 80px;
     padding-block: 56px 64px;
   }
 

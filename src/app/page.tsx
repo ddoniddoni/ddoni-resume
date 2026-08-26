@@ -4,9 +4,10 @@ import "@/styles/sections/intro.scss";
 import { WorkShowcase } from "@/components/projects/work-showcase";
 import { CareerCarousel } from "@/components/ui/career-carousel";
 import { ExpertiseAccordion } from "@/components/ui/expertise-accordion";
-import { HandWaveIcon, SparkleIcon } from "@/components/ui/icons";
+import { HandWaveIcon } from "@/components/ui/icons";
 import { ScrollRevealText } from "@/components/ui/scroll-reveal-text";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ShimmerEyebrow } from "@/components/ui/shimmer-eyebrow";
 import { SkillsTicker } from "@/components/ui/skills-ticker";
 import {
   aboutPreview,
@@ -75,10 +76,7 @@ export default function Home() {
         <h2 className="visually-hidden" id="about-preview-title">
           {aboutPreview.eyebrow}
         </h2>
-        <p aria-hidden="true" className="about-preview__eyebrow">
-          <SparkleIcon />
-          <span>{aboutPreview.eyebrow}</span>
-        </p>
+        <ShimmerEyebrow ariaHidden>{aboutPreview.eyebrow}</ShimmerEyebrow>
         <ScrollRevealText className="about-preview__statement" text={aboutPreview.statement} />
       </section>
 
@@ -86,7 +84,7 @@ export default function Home() {
 
       <section className="section section--expertise" aria-labelledby="expertise-title">
         <SectionHeading
-          eyebrow="Areas of expertise"
+          eyebrow="전문 분야"
           title="집중하는 개발 영역"
           description="실제 서비스에서 반복해 다뤄 온 문제와 화면 구현의 기준입니다."
           id="expertise-title"
@@ -96,7 +94,7 @@ export default function Home() {
 
       <section className="section" aria-labelledby="career-highlights-title">
         <SectionHeading
-          eyebrow="Career highlights"
+          eyebrow="경력 요약"
           title="화면으로 남긴 경력"
           description="프로젝트와 조직마다 달랐던 문제를 프론트엔드 구현으로 풀어 온 기록입니다."
           id="career-highlights-title"
