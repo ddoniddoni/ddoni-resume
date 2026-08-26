@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SparkleIcon } from "@/components/ui/icons";
+import { ShimmerEyebrow } from "@/components/ui/shimmer-eyebrow";
 import type { Project } from "@/content/site";
 import { workShowcase } from "@/content/site";
 import { ProjectCard } from "./project-card";
@@ -13,10 +13,7 @@ export function WorkShowcase({ projects }: WorkShowcaseProps) {
   return (
     <section className="section work-showcase" aria-labelledby="work-showcase-title">
       <header className="work-showcase__header">
-        <p className="work-showcase__eyebrow">
-          <SparkleIcon aria-hidden="true" />
-          <span>{workShowcase.eyebrow}</span>
-        </p>
+        <ShimmerEyebrow>{workShowcase.eyebrow}</ShimmerEyebrow>
         <h2 className="work-showcase__title" id="work-showcase-title">
           {workShowcase.title}
         </h2>

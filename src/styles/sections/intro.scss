@@ -140,45 +140,6 @@
     place-items: center;
   }
 
-  .about-preview__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-    font-family: var(--display-font);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.96px;
-    line-height: 1;
-    text-transform: uppercase;
-
-    svg {
-      flex: none;
-      block-size: 18px;
-      inline-size: 18px;
-      color: var(--signal);
-      stroke: currentcolor;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 1.8;
-    }
-
-    span {
-      display: inline-block;
-      color: transparent;
-      background: linear-gradient(
-        105deg,
-        var(--signal) 30%,
-        var(--paper) 48%,
-        var(--signal) 66%
-      );
-      background-position: 160% 0;
-      background-size: 220% 100%;
-      background-clip: text;
-      animation: about-preview-shimmer 2000ms linear infinite;
-    }
-  }
-
   .about-preview__statement {
     margin: 0;
     max-inline-size: 1120px;
@@ -194,7 +155,7 @@
 
   @media (width >= 640px) {
     .page--home {
-      --home-gutter: clamp(32px, 7vw, 112px);
+      --home-gutter: max(32px, calc((100vw - 1216px) / 2));
     }
 
     .hero__lower {
@@ -287,24 +248,8 @@
   }
 }
 
-@keyframes about-preview-shimmer {
-  from {
-    background-position: 160% 0;
-  }
-
-  to {
-    background-position: -60% 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero__greeting-hand {
-    animation: none;
-  }
-
-  .about-preview__eyebrow span {
-    color: var(--signal);
-    background: none;
     animation: none;
   }
 }

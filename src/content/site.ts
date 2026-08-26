@@ -75,13 +75,20 @@ export type ExpertiseArea = {
   description: string;
 };
 
+// FAQ 콘텐츠 확정 시 사용한다.
+// export type ContactFaq = {
+//   question: string;
+//   answer: string;
+// };
+
 export type SkillTickerIcon =
   | "angular"
-  | "browser-testing"
   | "nestjs"
   | "nextjs"
   | "react"
   | "sass"
+  | "tailwindcss"
+  | "tanstack-query"
   | "typescript"
   | "websocket";
 
@@ -108,9 +115,9 @@ export const profile: Profile = {
 
 export const heroLinks: HeroLink[] = [
   { label: "GitHub", href: "https://github.com/ddoniddoni", external: true },
+  { label: "블로그", href: "https://velog.io/@psdkey/posts", external: true },
   { label: "경력", href: "/about" },
   { label: "프로젝트", href: "/projects" },
-  { label: "이메일", href: `mailto:${profile.email}` },
 ];
 
 export const aboutPreview: AboutPreview = {
@@ -137,29 +144,53 @@ export const skillsTicker: SkillTickerItem[] = [
   { label: "WebSocket", icon: "websocket" },
   { label: "Angular", icon: "angular" },
   { label: "SCSS", icon: "sass" },
-  { label: "브라우저 테스트", icon: "browser-testing" },
+  { label: "Tailwind CSS", icon: "tailwindcss" },
+  { label: "TanStack Query", icon: "tanstack-query" },
 ];
 
 export const expertiseAreas: ExpertiseArea[] = [
   {
-    id: "realtime-interface",
-    title: "실시간 인터페이스",
+    id: "structure-and-scalability",
+    title: "구조와 확장성",
     description:
-      "WebSocket 이벤트와 화면 상태를 연결해 변경된 정보만 빠르게 갱신하는 사용자 경험을 설계합니다.",
+      "컴포넌트와 상태의 책임을 명확하게 나누고, 기능의 추가와 변경에 유연하게 대응할 수 있는 구조를 설계합니다. 공통 로직과 UI를 적절히 분리해 유지보수성과 개발 효율을 높입니다.",
   },
   {
-    id: "frontend-architecture",
-    title: "프론트엔드 아키텍처",
+    id: "performance-and-experience",
+    title: "성능과 사용자 경험",
     description:
-      "React·Next.js·TypeScript 환경에서 화면과 상태의 책임을 나누고, 기능 변경에 견디는 구조를 만듭니다.",
+      "렌더링과 데이터 요청, 리소스 로딩 과정에서 발생하는 병목을 확인하고 사용자가 실제로 체감하는 속도를 개선합니다. 로딩·오류·빈 상태와 같은 다양한 상황까지 고려해 자연스러운 사용 흐름을 만듭니다.",
   },
   {
-    id: "operations-visualization",
-    title: "운영 화면 시각화",
+    id: "stability-and-quality",
+    title: "안정성과 품질",
     description:
-      "장비 상태와 배치 데이터를 한 화면에서 읽을 수 있도록 정보 구조와 시각적 우선순위를 구성합니다.",
+      "예외 상황과 변경 가능성을 고려해 안정적으로 운영할 수 있는 프론트엔드를 구현합니다. 타입 안정성, 일관된 코드 구조와 적절한 테스트를 통해 오류 가능성을 줄이고 서비스의 품질을 유지합니다.",
   },
 ];
+
+// export const contactFaqs: ContactFaq[] = [
+//   {
+//     question: "어떤 협업을 이야기할 수 있나요?",
+//     answer:
+//       "React, Next.js, TypeScript 기반의 화면 개발과 사용자 기능 개선, 서비스 리뉴얼에 관한 협업을 이야기할 수 있습니다.",
+//   },
+//   {
+//     question: "처음 연락할 때 어떤 내용을 알려주면 좋을까요?",
+//     answer:
+//       "프로젝트의 목표와 현재 상황, 예상 일정, 필요한 역할을 함께 알려주시면 맥락을 빠르게 파악하는 데 도움이 됩니다.",
+//   },
+//   {
+//     question: "문의는 어떤 방식으로 전달되나요?",
+//     answer:
+//       "양식을 작성하면 사용 중인 메일 앱이 열리고, 입력한 이름·회신 이메일·문의 내용이 메일 초안에 자동으로 채워집니다.",
+//   },
+//   {
+//     question: "이전 작업은 어디에서 볼 수 있나요?",
+//     answer:
+//       "프로젝트 페이지에서 개인 프로젝트와 실무 프로젝트의 문제 맥락, 구현 과정, 사용 기술을 확인할 수 있습니다.",
+//   },
+// ];
 
 export const career: CareerEntry[] = [
   {

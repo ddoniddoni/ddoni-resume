@@ -1,6 +1,6 @@
 .contact-cta {
   margin-block-start: var(--section-space);
-  padding-block: clamp(96px, 12vw, 144px) 0;
+  padding-block: clamp(72px, 8vw, 96px) 0;
   padding-inline: 0;
   text-align: center;
   border: 0;
@@ -8,26 +8,9 @@
   background: transparent;
 }
 
-  .contact-cta__topline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-inline: auto;
-    inline-size: fit-content;
-    font-family: var(--mono-font);
-    font-size: 11.52px;
-    font-weight: 600;
-    color: var(--paper-muted);
-    letter-spacing: 1.28px;
-    text-transform: uppercase;
-
-    &::before {
-      content: "✦";
-      font-size: 16px;
-      color: var(--signal);
-    }
-  }
+.contact-cta__topline {
+  margin-inline: auto;
+}
 
   .contact-cta__title {
     margin-block: clamp(32px, 5vw, 56px) 24px;
@@ -105,5 +88,7 @@
 @media (width <= 639px) {
   .contact-cta__title {
     inline-size: calc(100% - 32px);
+    max-inline-size: none;
+    font-size: 32px;
   }
 }

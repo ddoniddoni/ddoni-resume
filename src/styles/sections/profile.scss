@@ -9,7 +9,6 @@
 
 .about-hero__profile {
   position: relative;
-  padding-inline-end: 36px;
 }
 
 .about-hero__photo-frame {
@@ -23,60 +22,6 @@
 .about-hero__photo {
   object-fit: cover;
   object-position: center top;
-}
-
-.about-hero__contact-disc {
-  overflow: hidden;
-  position: absolute;
-  inset-block-end: -44px;
-  inset-inline-end: 0;
-  display: grid;
-  inline-size: 112px;
-  aspect-ratio: 1;
-  color: var(--paper);
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
-  background: var(--ink-raised);
-  box-shadow: 0 16px 32px rgb(0, 0, 0, 20%);
-  transition: background-color 200ms ease, color 200ms ease, transform 320ms ease;
-  place-items: center;
-}
-
-.about-hero__contact-disc:hover {
-  color: var(--ink);
-  background: var(--signal);
-  transform: rotate(18deg);
-}
-
-.about-hero__contact-orbit {
-  position: absolute;
-  inset: 0;
-  block-size: 100%;
-  inline-size: 100%;
-}
-
-.about-hero__contact-orbit text {
-  font-family: var(--mono-font);
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.about-hero__contact-arrow {
-  display: grid;
-  inline-size: 46px;
-  aspect-ratio: 1;
-  font-size: 22px;
-  border: 1px solid currentcolor;
-  border-radius: 50%;
-  background: var(--ink-raised);
-  transition: background-color 200ms ease, transform 320ms ease;
-  place-items: center;
-}
-
-.about-hero__contact-disc:hover .about-hero__contact-arrow {
-  background: transparent;
-  transform: rotate(-18deg);
 }
 
 .about-hero__content {
@@ -327,16 +272,11 @@
   }
 
   .about-hero__profile {
-    padding-inline-end: 48px;
     max-inline-size: 440px;
   }
 
   .about-hero__photo-frame {
     border-radius: 0 0 180px 180px;
-  }
-
-  .about-hero__contact-disc {
-    inline-size: 128px;
   }
 
   .about-career-entry__details {
@@ -374,10 +314,6 @@
   .about-hero {
     grid-template-columns: minmax(360px, 0.78fr) minmax(0, 1.22fr);
     gap: 96px;
-  }
-
-  .about-hero__profile {
-    padding-inline-end: 56px;
   }
 
   .about-hero__content {

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactCta } from "@/components/layout/contact-cta";
-import { ContactOrbitIcon } from "@/components/ui/icons";
 import { SkillsTicker } from "@/components/ui/skills-ticker";
-import { career, careerSummary, expertiseAreas, profile, skillsTicker } from "@/content/site";
+import { career, careerSummary, expertiseAreas, skillsTicker } from "@/content/site";
 import "@/styles/sections/profile.scss";
 
 export const metadata: Metadata = {
@@ -30,16 +29,6 @@ export default function AboutPage() {
               src="/profile.jpg"
             />
           </div>
-          <a
-            aria-label="박상돈에게 이메일 보내기"
-            className="about-hero__contact-disc"
-            href={`mailto:${profile.email}`}
-          >
-            <ContactOrbitIcon className="about-hero__contact-orbit" />
-            <span aria-hidden="true" className="about-hero__contact-arrow">
-              ↗
-            </span>
-          </a>
         </aside>
 
         <div className="about-hero__content">

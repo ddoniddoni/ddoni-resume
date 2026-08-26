@@ -1,6 +1,6 @@
 .section-heading {
   display: grid;
-  gap: 19.2px;
+  gap: 16px;
   margin-block-end: clamp(38.4px, 5vw, 72px);
 }
 
@@ -9,8 +9,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding-block-start: 13.6px;
-    border-block-start: 1px solid var(--line);
   }
 
   .section-heading__count {
@@ -68,5 +66,17 @@
 
   .section-heading__description {
     justify-self: end;
+  }
+}
+
+@media (width >= 1280px) {
+  .section-heading {
+    grid-template-columns: minmax(432px, 0.65fr) minmax(700px, 1fr);
+    align-items: start;
+  }
+
+  .section-heading__description {
+    max-inline-size: none;
+    white-space: nowrap;
   }
 }

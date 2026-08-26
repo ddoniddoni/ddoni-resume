@@ -4,9 +4,10 @@ import "@/styles/sections/intro.scss";
 import { WorkShowcase } from "@/components/projects/work-showcase";
 import { CareerCarousel } from "@/components/ui/career-carousel";
 import { ExpertiseAccordion } from "@/components/ui/expertise-accordion";
-import { HandWaveIcon, SparkleIcon } from "@/components/ui/icons";
+import { HandWaveIcon } from "@/components/ui/icons";
 import { ScrollRevealText } from "@/components/ui/scroll-reveal-text";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ShimmerEyebrow } from "@/components/ui/shimmer-eyebrow";
 import { SkillsTicker } from "@/components/ui/skills-ticker";
 import {
   aboutPreview,
@@ -75,10 +76,7 @@ export default function Home() {
         <h2 className="visually-hidden" id="about-preview-title">
           {aboutPreview.eyebrow}
         </h2>
-        <p aria-hidden="true" className="about-preview__eyebrow">
-          <SparkleIcon />
-          <span>{aboutPreview.eyebrow}</span>
-        </p>
+        <ShimmerEyebrow ariaHidden>{aboutPreview.eyebrow}</ShimmerEyebrow>
         <ScrollRevealText className="about-preview__statement" text={aboutPreview.statement} />
       </section>
 
