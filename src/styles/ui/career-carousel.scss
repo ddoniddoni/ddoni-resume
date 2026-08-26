@@ -1,0 +1,155 @@
+.career-carousel {
+  display: grid;
+  gap: 20px;
+}
+
+  .career-carousel__viewport {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--ink-raised);
+  }
+
+  .career-carousel__track {
+    display: flex;
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .career-carousel__slide {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    flex: none;
+    gap: 16px;
+    padding-block: clamp(24px, 4vw, 36px);
+    padding-inline: clamp(20px, 4vw, 40px);
+    inline-size: 100%;
+  }
+
+  .career-carousel__monogram {
+    display: grid;
+    align-self: start;
+    block-size: 56px;
+    inline-size: 56px;
+    font-family: var(--display-font);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.8px;
+    border-radius: 50%;
+    background: var(--signal);
+    place-items: center;
+  }
+
+  .career-carousel__content {
+    min-inline-size: 0;
+  }
+
+  .career-carousel__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    font-family: var(--mono-font);
+    font-size: 11.52px;
+    font-weight: 600;
+    color: var(--paper-muted);
+    letter-spacing: 1.12px;
+    text-transform: uppercase;
+  }
+
+  .career-carousel__content h3,
+  .career-carousel__content p {
+    margin: 0;
+  }
+
+  .career-carousel__content h3 {
+    margin-block-start: 16px;
+    font-family: var(--display-font);
+    font-size: clamp(24.8px, 3vw, 40px);
+    font-weight: 500;
+    letter-spacing: -0.48px;
+    line-height: 1;
+    word-break: keep-all;
+  }
+
+  .career-carousel__team {
+    margin-block-start: 10.4px !important;
+    color: var(--paper-muted);
+  }
+
+  .career-carousel__highlight {
+    margin-block-start: 20px !important;
+    font-size: 16px;
+    color: var(--paper);
+  }
+
+  .career-carousel__role {
+    display: inline-block;
+    margin-block-start: 24px;
+    padding-block: 4px;
+    padding-inline: 11.2px;
+    font-size: 12px;
+    color: var(--paper-muted);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+  }
+
+  .career-carousel__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .career-carousel__count {
+    font-family: var(--mono-font);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--paper-muted);
+    letter-spacing: 1.28px;
+  }
+
+  .career-carousel__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .career-carousel__buttons button {
+    display: grid;
+    padding: 0;
+    block-size: 40px;
+    inline-size: 40px;
+    font-size: 16px;
+    color: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: transparent;
+    transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+    place-items: center;
+  }
+
+  .career-carousel__buttons button:hover,
+  .career-carousel__buttons button:focus-visible {
+    color: var(--ink);
+    border-color: var(--signal);
+    background: var(--signal);
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  .career-carousel__track,
+  .career-carousel__buttons button {
+    transition: none;
+  }
+}
+
+@media (width >= 640px) {
+  .career-carousel__slide {
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .career-carousel__monogram {
+    block-size: 80px;
+    inline-size: 80px;
+    font-size: 20px;
+  }
+}

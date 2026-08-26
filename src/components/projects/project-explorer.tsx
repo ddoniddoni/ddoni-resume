@@ -9,12 +9,13 @@ import {
   useState,
 } from "react";
 import { ProjectCard } from "@/components/projects/project-card";
+import { SearchIcon } from "@/components/ui/icons";
 import {
   projectCategoryLabels,
   type Project,
   type ProjectCategory,
 } from "@/content/site";
-import "./project-explorer.scss";
+import "@/styles/projects/project-explorer.scss";
 
 type Filter = "all" | ProjectCategory;
 
@@ -23,7 +24,7 @@ type ProjectExplorerProps = {
 };
 
 function filterLabel(filter: Filter) {
-  return filter === "all" ? "All" : projectCategoryLabels[filter];
+  return filter === "all" ? "전체" : projectCategoryLabels[filter];
 }
 
 export function ProjectExplorer({ projects }: ProjectExplorerProps) {
@@ -162,16 +163,8 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
           ref={searchButtonRef}
           type="button"
         >
-          <svg
-            aria-hidden="true"
-            className="search-icon"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="11" cy="11" r="6.5" />
-            <path d="m16 16 4 4" />
-          </svg>
-          <span>Search</span>
+          <SearchIcon className="search-icon" />
+          <span>검색</span>
         </button>
         <div
           className="filter-list"
@@ -213,21 +206,13 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
               프로젝트 검색
             </h2>
             <div className="search-dialog__header">
-              <svg
-                aria-hidden="true"
-                className="search-icon"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="11" cy="11" r="6.5" />
-                <path d="m16 16 4 4" />
-              </svg>
+              <SearchIcon className="search-icon" />
               <input
                 aria-label="프로젝트 검색"
                 autoFocus
                 className="search-dialog__input"
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search"
+                placeholder="프로젝트 검색"
                 type="search"
                 value={query}
               />
@@ -242,8 +227,8 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
             </div>
             <div className="search-dialog__body" aria-live="polite">
               <div className="search-dialog__summary">
-                <span>Projects</span>
-                <span>{normalizedQuery ? `${visibleProjects.length} results` : "Type to search"}</span>
+                <span>프로젝트</span>
+                <span>{normalizedQuery ? `${visibleProjects.length}개 결과` : "검색어를 입력하세요"}</span>
               </div>
               {normalizedQuery ? (
                 visibleProjects.length > 0 ? (

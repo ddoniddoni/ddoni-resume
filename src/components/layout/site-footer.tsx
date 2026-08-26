@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
-import "./site-footer.scss";
+import "@/styles/layout/site-footer.scss";
 
 export function SiteFooter() {
   return (
@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="site-footer__inner">
         <p className="footer-meta">© 2026 {siteConfig.name}</p>
         <Link className="footer-link" href="/contact">
-          Contact <span aria-hidden="true">↗</span>
+          연락하기 <span aria-hidden="true">↗</span>
         </Link>
       </div>
     </footer>

@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { SmoothScroll } from "@/components/ui/smooth-scroll";
 import { siteConfig } from "@/content/site";
-import "./globals.scss";
+import "./tailwind.css";
+import "@/styles/base/globals.scss";
 
 const themeScript = `(() => {
   try {
-    const savedTheme = window.localStorage.getItem("ddoniddoni-theme");
-    const theme = savedTheme === "light" ? "light" : "dark";
+    const storedTheme = localStorage.getItem("ddoni-resume-theme");
+    const theme = storedTheme === "light" ? "light" : "dark";
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
   } catch {
     document.documentElement.dataset.theme = "dark";
+    document.documentElement.style.colorScheme = "dark";
   }
 })();`;
 
@@ -33,12 +36,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="ko"
-      data-scroll-behavior="smooth"
-      data-theme="dark"
-      suppressHydrationWarning
-    >
+    <html lang="ko" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
@@ -46,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a className="skip-link" href="#main-content">
           본문으로 건너뛰기
         </a>
+        <SmoothScroll />
         <SiteHeader />
         {children}
         <SiteFooter />

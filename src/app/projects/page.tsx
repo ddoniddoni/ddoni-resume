@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { ContactCta } from "@/components/layout/contact-cta";
 import { ProjectExplorer } from "@/components/projects/project-explorer";
+import "@/styles/projects/project-index.scss";
 import { projects } from "@/content/site";
-import "./page.scss";
 
 export const metadata: Metadata = {
-  title: "Projects",
-  description: "ddoniddoni의 개발과 디자인 프로젝트를 탐색하세요.",
+  title: "프로젝트",
+  description: "개인 프로젝트와 실무 프로젝트를 살펴보세요.",
   openGraph: {
-    title: "Projects",
-    description: "ddoniddoni의 개발과 디자인 프로젝트를 탐색하세요.",
+    title: "프로젝트",
+    description: "개인 프로젝트와 실무 프로젝트를 살펴보세요.",
   },
 };
 
@@ -21,7 +21,7 @@ export default function ProjectsPage() {
           <span className="eyebrow-mark" aria-hidden="true">
             ✦
           </span>
-          My work
+          주요 작업
         </p>
         <h1 className="page-header__title">
           더 나은 디지털 작업을 만들고 기록합니다.

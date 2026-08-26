@@ -1,17 +1,15 @@
 import Link from "next/link";
-import "./contact-cta.scss";
+import { ShimmerEyebrow } from "@/components/ui/shimmer-eyebrow";
+import "@/styles/layout/contact-cta.scss";
 
 export function ContactCta() {
   return (
     <section className="contact-cta" aria-labelledby="contact-cta-title">
-      <div className="contact-cta__topline">
-        <span>Contact</span>
-        <span>Open to the next brief</span>
-      </div>
+      <ShimmerEyebrow className="contact-cta__topline">연락</ShimmerEyebrow>
       <h2 id="contact-cta-title" className="contact-cta__title">
-        다음 작업을 함께
+        사용자에게 더 좋은 경험을 만드는 일,
         <br />
-        정리해볼까요?
+        함께하고 싶습니다.
       </h2>
       <div className="contact-cta__body">
         <Link className="button button--signal button--ripple" href="/contact">
