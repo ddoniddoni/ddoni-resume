@@ -298,6 +298,74 @@
     margin-block-start: 16px;
   }
 
+  .project-detail__demo {
+    margin-block-start: 28px;
+  }
+
+  .project-detail__demo-title {
+    margin: 0;
+    padding-block-end: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--paper);
+    line-height: 24px;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .project-detail__demo-table {
+    display: grid;
+    margin-block: 0;
+    margin-inline: 0;
+    inline-size: 100%;
+    border-collapse: collapse;
+  }
+
+  .project-detail__demo-table thead,
+  .project-detail__demo-table tbody {
+    display: grid;
+  }
+
+  .project-detail__demo-table tr {
+    display: grid;
+    grid-template-columns: minmax(44px, 0.6fr) minmax(0, 1.55fr) minmax(0, 0.95fr);
+    gap: 12px;
+    padding-block: 14px;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .project-detail__demo-table thead tr {
+    padding-block: 12px 10px;
+    border-block-start: 0;
+  }
+
+  .project-detail__demo-table th,
+  .project-detail__demo-table td {
+    min-inline-size: 0;
+    text-align: start;
+  }
+
+  .project-detail__demo-table thead th {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--paper-muted);
+    line-height: 16px;
+  }
+
+  .project-detail__demo-table tbody th {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    line-height: 20px;
+  }
+
+  .project-detail__demo-table td {
+    font-family: var(--mono-font);
+    font-size: 14px;
+    color: var(--paper);
+    line-height: 20px;
+    overflow-wrap: anywhere;
+  }
+
   .project-detail__list,
   .project-detail__technology-list {
     display: grid;

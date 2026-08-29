@@ -148,6 +148,30 @@ export default async function ProjectDetailPage({
               {project.background.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
+              {project.demoAccounts && project.demoAccounts.length > 0 && (
+                <aside className="project-detail__demo" aria-labelledby="demo-accounts-title">
+                  <h3 id="demo-accounts-title" className="project-detail__demo-title">계정 정보</h3>
+                  <table className="project-detail__demo-table">
+                    <caption className="visually-hidden">TripMate 데모 계정 정보</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">구분</th>
+                        <th scope="col">이메일</th>
+                        <th scope="col">비밀번호</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {project.demoAccounts.map((account) => (
+                        <tr key={account.email}>
+                          <th scope="row">{account.role}</th>
+                          <td>{account.email}</td>
+                          <td>{account.password}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </aside>
+              )}
             </section>
 
             <section id="features">

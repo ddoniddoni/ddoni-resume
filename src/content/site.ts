@@ -13,6 +13,12 @@ export type ProjectTechnology = {
   description?: string;
 };
 
+export type ProjectDemoAccount = {
+  role: string;
+  email: string;
+  password: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -28,6 +34,7 @@ export type Project = {
   previewImage?: ProjectPreviewImage;
   projectUrl?: string;
   repositoryUrl?: string;
+  demoAccounts?: ProjectDemoAccount[];
   featured?: boolean;
   background: string[];
   process: string[];
@@ -287,6 +294,10 @@ export const projects: Project[] = [
     },
     projectUrl: "https://tripmate-xi-six.vercel.app",
     repositoryUrl: "https://github.com/ddoniddoni/tripmate",
+    demoAccounts: [
+      { role: "관리자", email: "admin@tripmate.com", password: "admin1234" },
+      { role: "테스트", email: "test@tripmate.com", password: "admin1234" },
+    ],
     featured: true,
     background: [
       "여행 준비가 단체 채팅방에서 시작되면 장소 링크, 일정 의견, 준비물과 경비 정보가 빠르게 흩어지고 여러 버전의 계획표가 생깁니다.",
