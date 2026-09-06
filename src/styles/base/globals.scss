@@ -141,14 +141,15 @@ body {
   z-index: 1;
   animation: theme-reveal 1000ms ease forwards;
   mask-clip: border-box;
-  mask-image: url("/theme-reveal-mask.svg");
+  // Keep the reveal independent of image loading on the first toggle.
+  mask-image: radial-gradient(circle closest-side, #fff 72%, transparent 100%);
   mask-mode: match-source;
   mask-origin: border-box;
   mask-position:
     calc(var(--theme-reveal-origin-x) - var(--theme-reveal-size) / 2)
     calc(var(--theme-reveal-origin-y) - var(--theme-reveal-size) / 2);
   mask-repeat: no-repeat;
-  mask-size: var(--theme-reveal-size);
+  mask-size: var(--theme-reveal-size) var(--theme-reveal-size);
   mix-blend-mode: normal;
 }
 
