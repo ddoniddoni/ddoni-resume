@@ -5,8 +5,6 @@ type ProjectCardMockupProps = {
   title: string;
 };
 
-const rackUnits = Array.from({ length: 9 });
-
 export function ProjectCardMockup({ kind, title }: ProjectCardMockupProps) {
   if (kind === "social") {
     return (
@@ -73,38 +71,6 @@ export function ProjectCardMockup({ kind, title }: ProjectCardMockupProps) {
           </div>
         </div>
         <span className="project-card-mockup__translation-caption">코드 스캔 · 시트 동기화 · JSON 생성</span>
-      </div>
-    );
-  }
-
-  if (kind === "rack") {
-    return (
-      <div className="project-card-mockup project-card-mockup--rack" aria-hidden="true">
-        <div className="project-card-mockup__window-bar">
-          <span />
-          <span />
-          <span />
-          <b>42U</b>
-        </div>
-        <div className="project-card-mockup__rack-layout">
-          <div className="project-card-mockup__rack-scale">
-            <span>42</span>
-            <span>28</span>
-            <span>14</span>
-            <span>01</span>
-          </div>
-          <div className="project-card-mockup__rack-units">
-            {rackUnits.map((_, index) => (
-              <span key={index} className={`project-card-mockup__rack-unit project-card-mockup__rack-unit--${index + 1}`} />
-            ))}
-          </div>
-          <div className="project-card-mockup__rack-summary">
-            <span>가동 장비</span>
-            <strong>18</strong>
-            <span>유휴 공간</span>
-            <strong>12U</strong>
-          </div>
-        </div>
       </div>
     );
   }
