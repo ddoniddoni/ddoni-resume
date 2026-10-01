@@ -20,6 +20,13 @@ const projectTocItems: ProjectTocItem[] = [
   { id: "outcome", label: "결과" },
 ];
 
+const careerTocItems: ProjectTocItem[] = [
+  { id: "overview", label: "프로젝트 개요" },
+  { id: "technologies", label: "기술 스택" },
+  { id: "process", label: "주요 업무" },
+  { id: "outcome", label: "성과" },
+];
+
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
@@ -63,6 +70,9 @@ export default async function ProjectDetailPage({
     project.technologyDetails ?? project.technologies.map((name) => ({ name, description: undefined }));
   const featuredTechnologies = project.technologies.slice(0, 3);
   const remainingTechnologyCount = project.technologies.length - featuredTechnologies.length;
+  const isProfessional = project.categories.includes("professional");
+  const tocItems = isProfessional ? careerTocItems : projectTocItems;
+  const sectionLabels = Object.fromEntries(tocItems.map(({ id, label }) => [id, label]));
 
   return (
     <main id="main-content" className="page project-detail">
@@ -119,7 +129,7 @@ export default async function ProjectDetailPage({
             <p>{project.summary}</p>
             <dl>
               <div>
-                <dt>역할</dt>
+                <dt>{isProfessional ? "담당 역할" : "역할"}</dt>
                 <dd>{project.role}</dd>
               </div>
               <div>
@@ -144,7 +154,7 @@ export default async function ProjectDetailPage({
         <div className="project-detail__content-grid">
           <article className="project-detail__article">
             <section id="overview">
-              <h2>프로젝트 소개</h2>
+              <h2>{sectionLabels.overview}</h2>
               {project.background.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -174,17 +184,19 @@ export default async function ProjectDetailPage({
               )}
             </section>
 
-            <section id="features">
-              <h2>주요 기능</h2>
-              <ul className="project-detail__list">
-                {project.outcome.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
+            {!isProfessional && (
+              <section id="features">
+                <h2>{sectionLabels.features}</h2>
+                <ul className="project-detail__list">
+                  {project.outcome.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             <section id="technologies">
-              <h2>사용 기술</h2>
+              <h2>{sectionLabels.technologies}</h2>
               <ul className="project-detail__technology-list">
                 {technologyDetails.map((technology) => (
                   <li key={technology.name}>
@@ -196,7 +208,7 @@ export default async function ProjectDetailPage({
             </section>
 
             <section id="process">
-              <h2>구현 과정</h2>
+              <h2>{sectionLabels.process}</h2>
               <ul className="project-detail__list">
                 {project.process.map((item) => (
                   <li key={item}>{item}</li>
@@ -205,7 +217,7 @@ export default async function ProjectDetailPage({
             </section>
 
             <section id="outcome">
-              <h2>결과</h2>
+              <h2>{sectionLabels.outcome}</h2>
               <ul className="project-detail__list">
                 {project.outcome.map((item) => (
                   <li key={item}>{item}</li>
@@ -215,7 +227,7 @@ export default async function ProjectDetailPage({
           </article>
 
           <ProjectToc
-            items={projectTocItems}
+            items={tocItems}
             projectUrl={project.projectUrl}
             repositoryUrl={project.repositoryUrl}
           />
