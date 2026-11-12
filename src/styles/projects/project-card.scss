@@ -179,8 +179,7 @@
   .project-card-mockup__social-main,
   .project-card-mockup__code-panel,
   .project-card-mockup__sheet-panel,
-  .project-card-mockup__json-panel,
-  .project-card-mockup__rack-summary {
+  .project-card-mockup__json-panel {
     border: 1px solid rgb(246, 247, 255, 10%);
     border-radius: 6px;
     background: rgb(246, 247, 255, 3%);
@@ -196,7 +195,6 @@
   .project-card-mockup__room-list-title,
   .project-card-mockup__social-title,
   .project-card-mockup__translation-caption,
-  .project-card-mockup__rack-summary span,
   .project-card-mockup__status-legend {
     font-family: var(--mono-font);
     font-size: 7px;
@@ -345,74 +343,6 @@
     display: block;
     margin-block-start: 16px;
     text-align: center;
-  }
-
-  .project-card-mockup--rack {
-    background: #17211b;
-  }
-
-  .project-card-mockup__rack-layout {
-    display: grid;
-    grid-template-columns: 18px 1fr 62px;
-    gap: 8px;
-    margin-block-start: 12px;
-    block-size: calc(100% - 22px);
-  }
-
-  .project-card-mockup__rack-scale {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-block: 3px;
-    font-family: var(--mono-font);
-    font-size: 6px;
-    color: rgb(246, 247, 255, 45%);
-    line-height: 1;
-  }
-
-  .project-card-mockup__rack-units {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding: 5px;
-    border: 1px solid rgb(246, 247, 255, 18%);
-    border-radius: 4px;
-    background: #0e1511;
-  }
-
-  .project-card-mockup__rack-unit {
-    display: block;
-    flex: 1;
-    min-block-size: 4px;
-    border-radius: 1px;
-    background: rgb(246, 247, 255, 10%);
-  }
-
-  .project-card-mockup__rack-unit--1,
-  .project-card-mockup__rack-unit--4,
-  .project-card-mockup__rack-unit--7 {
-    background: #67c786;
-  }
-
-  .project-card-mockup__rack-unit--3,
-  .project-card-mockup__rack-unit--6 {
-    background: #c7984a;
-  }
-
-  .project-card-mockup__rack-summary {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-content: center;
-    gap: 4px 6px;
-    padding: 8px;
-  }
-
-  .project-card-mockup__rack-summary strong {
-    font-family: var(--mono-font);
-    font-size: 10px;
-    font-weight: 700;
-    color: #e8f9ea;
-    line-height: 1;
   }
 
   .project-card-mockup--topology {
